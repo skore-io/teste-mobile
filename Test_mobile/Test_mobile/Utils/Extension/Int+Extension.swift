@@ -1,8 +1,8 @@
 import UIKit
 
-extension Int64 {
+extension Int {
     var toDateString: String {
-        let timeInterval = TimeInterval(integerLiteral: self)
+        let timeInterval = TimeInterval(self/1000)
         let date = Date(timeIntervalSince1970: timeInterval)
 
         return date.formatted

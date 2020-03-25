@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LessonHeaderView" customModule="Test_mobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="517" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INJ-YV-rUg">
+                    <rect key="frame" x="0.0" y="44" width="517" height="62"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wde-sJ-cB9">
+                            <rect key="frame" x="16" y="21" width="485" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="Wde-sJ-cB9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="INJ-YV-rUg" secondAttribute="top" constant="16" id="2uf-BS-T56"/>
+                        <constraint firstAttribute="trailing" secondItem="Wde-sJ-cB9" secondAttribute="trailing" constant="16" id="3o4-oO-VzV"/>
+                        <constraint firstItem="Wde-sJ-cB9" firstAttribute="leading" secondItem="INJ-YV-rUg" secondAttribute="leading" constant="16" id="OSH-Qh-XaQ"/>
+                        <constraint firstItem="Wde-sJ-cB9" firstAttribute="centerY" secondItem="INJ-YV-rUg" secondAttribute="centerY" id="erM-2T-ah7"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wde-sJ-cB9" secondAttribute="bottom" constant="16" id="mKH-ak-59i"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="INJ-YV-rUg" secondAttribute="leading" id="55x-Lj-nhf"/>
+                <constraint firstItem="INJ-YV-rUg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="I2d-vT-2KG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="INJ-YV-rUg" secondAttribute="bottom" id="Uyg-7U-f2g"/>
+                <constraint firstItem="INJ-YV-rUg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="esR-Pn-KeB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backgroundHeaderView" destination="INJ-YV-rUg" id="y88-ln-ra4"/>
+                <outlet property="titleHeaderLabel" destination="Wde-sJ-cB9" id="VKj-ER-2hR"/>
+            </connections>
+            <point key="canvasLocation" x="-60.14492753623189" y="32.8125"/>
+        </view>
+    </objects>
+</document>
