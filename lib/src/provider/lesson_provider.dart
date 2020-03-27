@@ -3,9 +3,18 @@ import 'package:teste_mobile/src/model/lesson.dart';
 import 'package:teste_mobile/src/repository/lesson_repository.dart';
 
 class LessonProvider with ChangeNotifier {
-  Lesson _lesson;
+  List<Lesson> _lessons;
 
-  LessonProvider() : _lesson = Lesson.fromJson(data);
+  LessonProvider() {
+    _lessons =
+        List<Lesson>.from(data.map((item) => Lesson.fromJson(item)).toList());
+    _lessons.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+  }
 
-  get lesson => lesson;
+  List<Lesson> get lesson => _lessons;
+
+  void removeLesson(Lesson lesson) {
+    _lessons.remove(lesson);
+    notifyListeners();
+  }
 }

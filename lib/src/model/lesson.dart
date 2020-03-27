@@ -9,8 +9,9 @@ class Lesson {
   Summary summary;
 
   Lesson.fromJson(Map<String, dynamic> json)
-      : companyId = json['company_id'],
-        createdAt = json['created_at'],
+      : companyId = int.tryParse(json['company_id']),
+        createdAt =
+            DateTime.fromMicrosecondsSinceEpoch(json['created_at'] * 1000),
         name = json['name'],
         id = json['id'],
         status = json['status'],

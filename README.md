@@ -88,14 +88,14 @@ Dado o Json abaixo apresente:
 <h3>Requisitos</h3>
 Crie a seguinte interface que contenha uma lista com os itens declarados acima, essa lista deve apresentar as seguintes informações:
 
-- [ ] O nome da aula;
-- [ ] A data de criação em dd/MM/yyyy;
-- [ ] O ID da Aula;
-- [ ] Quando a aula estiver completa deve apresentar um ícone de √ em verde;
-- [ ] Quando a aula ainda não estiver iniciada não deverá apresentar nenhum ícone;
-- [ ] Quando a aula estiver em andamento deve apresentar a porcentagem do progresso;
-- [ ] A lista deve estar ordenada por ordem de criação;
-- [ ] Todos os itens devem ter um botão de exclusão funcional;
+- [x] O nome da aula;
+- [x] A data de criação em dd/MM/yyyy;
+- [x] O ID da Aula;
+- [x] Quando a aula estiver completa deve apresentar um ícone de √ em verde;
+- [x] Quando a aula ainda não estiver iniciada não deverá apresentar nenhum ícone;
+- [x] Quando a aula estiver em andamento deve apresentar a porcentagem do progresso;
+- [x] A lista deve estar ordenada por ordem de criação;
+- [x] Todos os itens devem ter um botão de exclusão funcional;
 
 <h3>Dicas</h3>
 
