@@ -4,6 +4,7 @@ using App.ViewModels;
 using App.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using App.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace App
@@ -30,6 +31,8 @@ namespace App
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+            containerRegistry.RegisterSingleton<IDataStore<Aula>, DataStore<Aula>>();
         }
     }
 }
