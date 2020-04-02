@@ -6,10 +6,30 @@
              x:Class="App.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <RefreshView IsRefreshing="{Binding Refreshing}" 
                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Label Text="{Binding Aulas.Count}" />
+            <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15" HorizontalOptions="StartAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="Title"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="Subtitle"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="Subtitle"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalOptions="End"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </RefreshView>
     </StackLayout>
 
