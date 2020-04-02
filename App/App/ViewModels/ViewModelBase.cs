@@ -1,9 +1,5 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.ViewModels
 {
@@ -16,6 +12,13 @@ namespace App.ViewModels
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
+        }
+
+        private bool _refreshing = false;
+        public bool Refreshing
+        {
+            get { return _refreshing; }
+            set { SetProperty(ref _refreshing, value); }
         }
 
         public ViewModelBase(INavigationService navigationService)
