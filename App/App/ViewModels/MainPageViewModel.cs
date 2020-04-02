@@ -14,14 +14,12 @@ namespace App.ViewModels
     public class MainPageViewModel : ViewModelBase
     {
         private readonly Faker<Aula> _seeder;
-        private readonly IDataStore<Aula> _store;
 
-        public MainPageViewModel(Faker<Aula> seeder, IDataStore<Aula> store, INavigationService navigationService)
+        public MainPageViewModel(Faker<Aula> seeder, INavigationService navigationService)
             : base(navigationService)
         {
             Title = "Skore-IO Mobile";
             _seeder = seeder ?? throw new ArgumentNullException(nameof(seeder));
-            _store = store ?? throw new ArgumentNullException(nameof(store));
             ReseedAulas = new DelegateCommand(SeedData)
                 .ObservesProperty(() => Aulas)
                 .ObservesProperty(() => Refreshing);
