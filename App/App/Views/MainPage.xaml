@@ -1,11 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="App.Views.MainPage"
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Bem Vindo ao Teste Mobile Skore.io!" />
+        <RefreshView IsRefreshing="{Binding Refreshing}" 
+                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="15" HorizontalOptions="StartAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="Title"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="Subtitle" HorizontalTextAlignment="End"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="Subtitle"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </StackLayout>
 
 </ContentPage>
