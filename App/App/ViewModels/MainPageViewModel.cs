@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 using App.Models;
@@ -23,29 +23,33 @@ namespace App.ViewModels
             _store = store ?? throw new ArgumentNullException(nameof(store));
         }
 
-        private List<Aula> _aulas = new List<Aula>();
-        public List<Aula> Aulas
+        private ObservableCollection<Aula> _aulas = new ObservableCollection<Aula>();
+        public ObservableCollection<Aula> Aulas
         {
             get { return _aulas; }
             set { SetProperty(ref _aulas, value); }
         }
-        
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
 
             Refreshing = true;
             // HACK: Simulando um pequeno delay para dar a impressão que estamos buscando algo na API
-            Func<Task<IEnumerable<Aula>>> fetchAndAwaitTask = async () =>
+            Func<Task> fetchAndAwaitTask = async () =>
             {
                 await Task.Delay(1000);
                 var result = _seeder.Generate(5);
                 await Task.Delay(500);
-                return result;
+                _store.AddRange(result);
             };
-            _store.AddRange(await fetchAndAwaitTask.Invoke());
-            Aulas = new List<Aula>(_store.State);
-            
+            await fetchAndAwaitTask.Invoke().ConfigureAwait(false);
+
+            foreach (var aula in _store.State)
+            {
+                Aulas.Add(aula);
+            }
+
             Refreshing = false;
         }
     }

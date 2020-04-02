@@ -23,9 +23,9 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="Title"/>
-                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="Subtitle"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="Subtitle" HorizontalTextAlignment="End"/>
                             <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="Subtitle"/>
-                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalOptions="End"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
