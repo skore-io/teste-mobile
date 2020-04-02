@@ -3,21 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="App.Views.MainPage"
+             x:Class="App.Views.MainPage"          
+             x:Name="AulasList"
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="Arraste para a direta para deletar uma Aula" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
         <RefreshView IsRefreshing="{Binding Refreshing}" 
                      Command="{Binding ReseedAulas}"
                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <!--<SwipeView>-->
-                            <!--<SwipeView.LeftItems>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
                                 <SwipeItem Text="Deletar"
-                                           BackgroundColor="Red"/>
-                            </SwipeView.LeftItems>-->
+                                           BackgroundColor="Red"                                                                                      
+                                           Command="{Binding Path=BindingContext.DeleteAula, Source={x:Reference AulasList}}"
+                                           CommandParameter="{Binding .}"/>
+                            </SwipeView.LeftItems>
                             <Grid Padding="15" HorizontalOptions="StartAndExpand">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="25"></RowDefinition>
@@ -33,7 +37,7 @@
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="Subtitle"/>
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End"/>
                             </Grid>
-                        <!--</SwipeView>-->
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
