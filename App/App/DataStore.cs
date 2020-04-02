@@ -4,13 +4,13 @@ namespace App
 {
     public class DataStore<T> : IDataStore<T>
     {
-        private readonly HashSet<T> _state = new HashSet<T>();
+        protected readonly HashSet<T> _state = new HashSet<T>();
         public IReadOnlyCollection<T> State
         {
             get => _state;
         }
 
-        private T _selected = default;
+        protected T _selected = default;
         public T Selected
         {
             get => _selected;
