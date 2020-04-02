@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="App.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Bem Vindo ao Teste Mobile Skore.io!" />
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <RefreshView IsRefreshing="{Binding Refreshing}" 
+                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Text="{Binding Aulas.Count}" />
+        </RefreshView>
     </StackLayout>
 
 </ContentPage>
