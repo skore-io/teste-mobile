@@ -1,8 +1,11 @@
 ﻿using Foundation;
+
 using Prism;
 using Prism.Ioc;
+
 using UIKit;
 
+using Xamarin.Forms;
 
 namespace App.iOS
 {
@@ -21,7 +24,8 @@ namespace App.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Forms.SetFlags("SwipeView_Experimental");
+            Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
