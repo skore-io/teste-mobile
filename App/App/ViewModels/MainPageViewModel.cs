@@ -25,9 +25,12 @@ namespace App.ViewModels
             ReseedAulas = new DelegateCommand(SeedData)
                 .ObservesProperty(() => Aulas)
                 .ObservesProperty(() => Refreshing);
+            DeleteAula = new DelegateCommand<Aula>(RemoveAulaFromState)
+                .ObservesProperty(() => Aulas);
         }
 
         public DelegateCommand ReseedAulas { get; private set; }
+        public DelegateCommand<Aula> DeleteAula { get; private set; }
 
         private ObservableCollection<Aula> _aulas = new ObservableCollection<Aula>();
         public ObservableCollection<Aula> Aulas
@@ -43,7 +46,7 @@ namespace App.ViewModels
             base.OnNavigatedTo(parameters);
         }
 
-        public async void SeedData()
+        private async void SeedData()
         {
             Refreshing = true;
 
@@ -58,5 +61,7 @@ namespace App.ViewModels
 
             Refreshing = false;
         }
+
+        private void RemoveAulaFromState(Aula a) => Aulas.Remove(a);
     }
 }
