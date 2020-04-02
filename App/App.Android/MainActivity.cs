@@ -1,8 +1,11 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+
 using Prism;
 using Prism.Ioc;
+
+using Xamarin.Forms;
 
 namespace App.Droid
 {
@@ -16,7 +19,8 @@ namespace App.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Forms.SetFlags("SwipeView_Experimental");
+            Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
     }
