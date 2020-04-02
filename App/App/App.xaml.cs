@@ -36,7 +36,6 @@ namespace App
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 
             RegisterDataSeeders(containerRegistry);
-            containerRegistry.RegisterSingleton<IDataStore<Aula>, DataStore<Aula>>();
         }
 
         private void RegisterDataSeeders(IContainerRegistry containerRegistry)
