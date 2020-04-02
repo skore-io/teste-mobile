@@ -6,6 +6,7 @@ using App.Models;
 
 using Bogus;
 
+using Prism.Commands;
 using Prism.Navigation;
 
 namespace App.ViewModels
@@ -21,7 +22,12 @@ namespace App.ViewModels
             Title = "Skore-IO Mobile";
             _seeder = seeder ?? throw new ArgumentNullException(nameof(seeder));
             _store = store ?? throw new ArgumentNullException(nameof(store));
+            ReseedAulas = new DelegateCommand(SeedData)
+                .ObservesProperty(() => Aulas)
+                .ObservesProperty(() => Refreshing);
         }
+
+        public DelegateCommand ReseedAulas { get; private set; }
 
         private ObservableCollection<Aula> _aulas = new ObservableCollection<Aula>();
         public ObservableCollection<Aula> Aulas
@@ -30,22 +36,22 @@ namespace App.ViewModels
             set { SetProperty(ref _aulas, value); }
         }
 
-        public override async void OnNavigatedTo(INavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            ReseedAulas.Execute();
+
             base.OnNavigatedTo(parameters);
+        }
 
+        public async void SeedData()
+        {
             Refreshing = true;
-            // HACK: Simulando um pequeno delay para dar a impressão que estamos buscando algo na API
-            Func<Task> fetchAndAwaitTask = async () =>
-            {
-                await Task.Delay(1000);
-                var result = _seeder.Generate(5);
-                await Task.Delay(500);
-                _store.AddRange(result);
-            };
-            await fetchAndAwaitTask.Invoke().ConfigureAwait(false);
 
-            foreach (var aula in _store.State)
+            Aulas.Clear();
+            await Task.Delay(1500);
+            var result = _seeder.Generate(5);
+            await Task.Delay(1500);
+            foreach (var aula in result)
             {
                 Aulas.Add(aula);
             }
