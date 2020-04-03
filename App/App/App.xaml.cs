@@ -1,13 +1,15 @@
-﻿using Prism;
-using Prism.Ioc;
+﻿using App.Models;
 using App.ViewModels;
 using App.Views;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using App.Models;
-using System;
+
 using Bogus;
 using Bogus.Extensions;
+
+using Prism;
+using Prism.Ioc;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace App
@@ -41,12 +43,12 @@ namespace App
         private void RegisterDataSeeders(IContainerRegistry containerRegistry)
         {
             var fakerSummary = new Faker<Summary>()
-                .RuleFor(s => s.Percentage, f => f.Random.Int(0, 100).OrNull(f, .2f));
+                .RuleFor(s => s.Percentage, f => f.Random.Int(50, 100).OrNull(f, .25f));
 
-            var fakerAula = new Faker<Aula>()
+            var fakerAula = new Faker<Aula>("pt_BR")
                 .RuleFor(a => a.Summary, f => fakerSummary)
                 .RuleFor(a => a.CompanyId, f => f.Random.Int(0, 200))
-                .RuleFor(a => a.CreatedAt, f => f.Date.RecentOffset().ToUnixTimeSeconds())
+                .RuleFor(a => a.CreatedAt, f => f.Date.RecentOffset(7).ToUnixTimeSeconds())
                 .RuleFor(a => a.Name, f => f.Commerce.ProductName())
                 .RuleFor(a => a.Id, f => f.Random.Guid().ToString())
                 .RuleFor(a => a.Status, f => f.PickRandom(AulaStatus.Status));

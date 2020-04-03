@@ -34,7 +34,15 @@
                                 <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="Title" LineBreakMode="TailTruncation"/>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="Subtitle" HorizontalTextAlignment="End"/>
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="Subtitle"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End"/>
+                                <Label Grid.Row="1" Grid.Column="1" IsVisible="{Binding Summary.HasPercentage}" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Summary.Percentage}" Value="100">
+                                            <Setter Property="TextColor" Value="Green"/>
+                                            <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                            <Setter Property="Text" Value="&#xf00c;"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
                             </Grid>
                         </SwipeView>
                     </DataTemplate>
