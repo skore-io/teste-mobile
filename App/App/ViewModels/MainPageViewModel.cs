@@ -20,7 +20,7 @@ namespace App.ViewModels
         {
             Title = "Skore-IO Mobile";
             _seeder = seeder ?? throw new ArgumentNullException(nameof(seeder));
-            ReseedAulas = new DelegateCommand(SeedData)
+            ReseedAulas = new DelegateCommand(async () => await SeedData())
                 .ObservesProperty(() => Aulas)
                 .ObservesProperty(() => Refreshing);
             DeleteAula = new DelegateCommand<Aula>(RemoveAulaFromState)
@@ -44,7 +44,7 @@ namespace App.ViewModels
             base.OnNavigatedTo(parameters);
         }
 
-        private async void SeedData()
+        private async Task SeedData()
         {
             Refreshing = true;
 
