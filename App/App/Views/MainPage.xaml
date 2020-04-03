@@ -22,20 +22,27 @@
                                            Command="{Binding Path=BindingContext.DeleteAula, Source={x:Reference AulasList}}"
                                            CommandParameter="{Binding .}"/>
                             </SwipeView.LeftItems>
-                            <Grid Padding="15" HorizontalOptions="StartAndExpand">
+                            <Grid Padding="10">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="25"></RowDefinition>
-                                    <RowDefinition Height="25"></RowDefinition>
-                                    <RowDefinition Height="25"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="Title"/>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="Title" LineBreakMode="TailTruncation"/>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding CreationDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" FontSize="Subtitle" HorizontalTextAlignment="End"/>
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="Subtitle"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End"/>
+                                <Label Grid.Row="1" Grid.Column="1" IsVisible="{Binding Summary.HasPercentage}" Text="{Binding Summary.Percentage, StringFormat='{0}%'}" HorizontalTextAlignment="End">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Summary.Percentage}" Value="100">
+                                            <Setter Property="TextColor" Value="Green"/>
+                                            <Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolid}"/>
+                                            <Setter Property="Text" Value="&#xf00c;"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
                             </Grid>
                         </SwipeView>
                     </DataTemplate>
