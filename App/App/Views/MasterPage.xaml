@@ -9,7 +9,7 @@
         <ContentPage Title="Menu">
             <StackLayout Padding="20">
                 <Button Text="Aulas" Command="{prism:NavigateTo MainPage}"/>
-                <Button Text="Sobre" Command="{prism:NavigateTo MainPage}"/>
+                <Button Text="Sobre" Command="{prism:NavigateTo SobrePage}"/>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

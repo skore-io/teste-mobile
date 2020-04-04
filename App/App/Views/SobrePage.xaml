@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="App.Views.SobrePage">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Padding="10" Spacing="50">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                </Style>
+            </ResourceDictionary>
+        </StackLayout.Resources>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="Desenvolvido por:" FontSize="Body"/>
+            <Label Text="Rodolpho Alves" FontSize="Body" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="Motivação:" FontSize="Body"/>
+            <Label Text="Teste de Apps Mobiles para a Skore.io" FontSize="Body" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+            <Label Text="Tecnologias/Bibliotecas Utilizadas" FontSize="Body" FontAttributes="Bold"/>
+            <Label Text="Xamarin.Forms" FontSize="Body"/>
+            <Label Text="Prism MVVM" FontSize="Body"/>
+            <Label Text="Bogus" FontSize="Body"/>
+            <Label Text="Font Awesome 5" FontSize="Body"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="Obrigado por conferir o App!" FontSize="Body"/>
+        </StackLayout>
+        <Label Text="&#xf164;" FontFamily="{StaticResource FontAwesomeSolid}" FontSize="Header"/>
+    </StackLayout>
+</ContentPage>

@@ -36,6 +36,8 @@ namespace App
         {
             containerRegistry.RegisterForNavigation<MasterPage, MasterPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SobrePage, SobrePageViewModel>();
+            
             containerRegistry.RegisterForNavigation<NavigationPage>();
 
             RegisterDataSeeders(containerRegistry);
