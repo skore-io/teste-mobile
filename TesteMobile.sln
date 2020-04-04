@@ -16,6 +16,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Android", "App\App.Andr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.iOS", "App\App.iOS\App.iOS.csproj", "{19A14062-CAF1-4860-894F-657E5C699672}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{FD7E913F-7A22-4EC1-BD2E-92BFB13E6DAB}"
+	ProjectSection(SolutionItems) = preProject
+		Screenshots\app-funcionando.gif = Screenshots\app-funcionando.gif
+		Screenshots\list-delete.png = Screenshots\list-delete.png
+		Screenshots\list-normal.png = Screenshots\list-normal.png
+		Screenshots\list-refreshing.png = Screenshots\list-refreshing.png
+		Screenshots\menu-master.png = Screenshots\menu-master.png
+		Screenshots\sobre.png = Screenshots\sobre.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -115,6 +125,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FD7E913F-7A22-4EC1-BD2E-92BFB13E6DAB} = {3A1C685C-E0C3-4C31-9505-254835907B52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CC6BB515-6806-4F24-A3A1-29DFF4F6ED68}
