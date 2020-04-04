@@ -51,10 +51,11 @@ namespace App.ViewModels
         {
             Refreshing = true;
 
+            Aulas.Clear();
+            
             await Task.Delay(3000);
             var result = _seeder.Generate(5);            
 
-            Aulas.Clear();
             foreach (var aula in result)
             {
                 Aulas.Add(aula);

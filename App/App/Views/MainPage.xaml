@@ -8,8 +8,8 @@
              Title="{Binding Title}"
              Visual="Material">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White">
-        <Label Text="Arraste para a direta para deletar uma Aula" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="15, 0">
+        <Label Text="Arraste para a esquerda para deletar uma Aula" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
         <RefreshView IsRefreshing="{Binding Refreshing}" 
                      Command="{Binding ReseedAulas}"
                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -17,12 +17,12 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
-                            <SwipeView.LeftItems>
+                            <SwipeView.RightItems>
                                 <SwipeItem Text="Deletar"
                                            BackgroundColor="Red"                                                                                      
                                            Command="{Binding Path=BindingContext.DeleteAula, Source={x:Reference AulasList}}"
                                            CommandParameter="{Binding .}"/>
-                            </SwipeView.LeftItems>
+                            </SwipeView.RightItems>
                             <Grid MinimumHeightRequest="75" Padding="10" Margin="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="30"></RowDefinition>
