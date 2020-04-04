@@ -10,11 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App\App.csproj", "{05007156-5A33-41BA-BD2A-E3A51CC95F50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "src\App\App.csproj", "{05007156-5A33-41BA-BD2A-E3A51CC95F50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Android", "App\App.Android\App.Android.csproj", "{E7A3995A-1985-449D-BB47-E2E32A923669}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Android", "src\App.Android\App.Android.csproj", "{E7A3995A-1985-449D-BB47-E2E32A923669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.iOS", "App\App.iOS\App.iOS.csproj", "{19A14062-CAF1-4860-894F-657E5C699672}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.iOS", "src\App.iOS\App.iOS.csproj", "{19A14062-CAF1-4860-894F-657E5C699672}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{FD7E913F-7A22-4EC1-BD2E-92BFB13E6DAB}"
 	ProjectSection(SolutionItems) = preProject
