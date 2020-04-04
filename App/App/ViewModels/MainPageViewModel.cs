@@ -25,10 +25,13 @@ namespace App.ViewModels
                 .ObservesProperty(() => Refreshing);
             DeleteAula = new DelegateCommand<Aula>(RemoveAulaFromState)
                 .ObservesProperty(() => Aulas);
+            DeleteAll = new DelegateCommand(RemoveAllAulasFromState)
+                .ObservesProperty(() => Aulas);
         }
 
         public DelegateCommand ReseedAulas { get; private set; }
         public DelegateCommand<Aula> DeleteAula { get; private set; }
+        public DelegateCommand DeleteAll { get; private set; }
 
         private ObservableCollection<Aula> _aulas = new ObservableCollection<Aula>();
         public ObservableCollection<Aula> Aulas
@@ -61,5 +64,6 @@ namespace App.ViewModels
         }
 
         private void RemoveAulaFromState(Aula a) => Aulas.Remove(a);
+        private void RemoveAllAulasFromState() => Aulas.Clear();
     }
 }

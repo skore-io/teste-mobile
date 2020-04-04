@@ -13,7 +13,7 @@
         <RefreshView IsRefreshing="{Binding Refreshing}" 
                      Command="{Binding ReseedAulas}"
                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
+            <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
@@ -23,7 +23,7 @@
                                            Command="{Binding Path=BindingContext.DeleteAula, Source={x:Reference AulasList}}"
                                            CommandParameter="{Binding .}"/>
                             </SwipeView.LeftItems>
-                            <Grid Padding="10">
+                            <Grid MinimumHeightRequest="75" Padding="10" Margin="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="30"></RowDefinition>
                                     <RowDefinition Height="auto"></RowDefinition>
@@ -48,8 +48,12 @@
                         </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="Nenhuma aula cadastrada! Arraste para baixo para recarregar as Aulas" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                </CollectionView.EmptyView>
             </CollectionView>
         </RefreshView>
+        <Button Text="Apagar Todas" Margin="5" BorderColor="Black" BackgroundColor="Red" Command="{Binding DeleteAll}"/>
     </StackLayout>
 
 </ContentPage>
