@@ -20,7 +20,8 @@ namespace App.Droid
             base.OnCreate(bundle);
 
             Forms.SetFlags("SwipeView_Experimental");
-            Forms.Init(this, bundle);
+            Forms.Init(this, bundle);            
+            FormsMaterial.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
     }
