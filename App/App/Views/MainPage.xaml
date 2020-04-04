@@ -5,14 +5,15 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="App.Views.MainPage"          
              x:Name="AulasList"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Visual="Material">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White">
         <Label Text="Arraste para a direta para deletar uma Aula" FontSize="Subtitle" HorizontalTextAlignment="Center"/>
         <RefreshView IsRefreshing="{Binding Refreshing}" 
                      Command="{Binding ReseedAulas}"
                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand">
+            <CollectionView ItemsSource="{Binding Aulas}" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
