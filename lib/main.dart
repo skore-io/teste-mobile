@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testemobileskore/pages/principal.dart';
+import 'package:testemobileskore/util/resources.dart';
 
 void main() {
   runApp(SkoreApp());
@@ -11,11 +12,10 @@ class SkoreApp extends StatelessWidget {
     return MaterialApp(
       title: 'Skore by kaique.dev',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Resources.customColorSwatch,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: PrincipalPage(),
     );
   }
 }
-
