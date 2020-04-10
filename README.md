@@ -1,7 +1,33 @@
+# teste_mobile_skore
+
+This **test** *already* made with:
+
+ [Dart](https://dart.dev) & [Flutter](https://flutter.dev)
+
+**Dependencies:**
+
+-   [google_fonts](https://pub.dev/packages/google_fonts): ^0.4.0
+-   [provider](https://pub.dev/packages/provider): ^4.0.4
+-   [rxdart](https://pub.dev/packages/rxdart): ^0.23.1
+-   [percent_indicator](https://pub.dev/packages/percent_indicator): ^2.1.1
+-   [intl](https://pub.dev/packages/intl): ^0.16.1
+
+## Screencast
+
+Youtube video:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=FcPM1oknJwE
+" target="_blank"><img src="http://img.youtube.com/vi/FcPM1oknJwE/0.jpg"
+alt="Screencast" width="240" height="180" border="10" /></a>
+
+
+***
+---
+___
+
 <h1 align="center">Teste Mobile</h1>
 
 <h5 align="center">Nosso Teste para conhecer como você codifica no dia-dia!</h5>
-
 
 <h3>Tecnologias na Skore</h3>
 
