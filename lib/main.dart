@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:testemobileskore/pages/splash.dart';
+import 'package:testemobileskore/util/disabled_scroll_behavior.dart';
 import 'package:testemobileskore/util/resources.dart';
 
 import 'bloc/aula.dart';
@@ -26,6 +27,12 @@ class SkoreApp extends StatelessWidget {
           primarySwatch: Resources.customColorSwatch,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        builder: (context, child) {
+          return ScrollConfiguration(
+            behavior: DisabledScrollBehavior(),
+            child: child,
+          );
+        },
         home: SplashScreen(),
       ),
     );
