@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:testemobileskore/pages/splash.dart';
 import 'package:testemobileskore/util/resources.dart';
 
-import 'bloc/aula_bloc.dart';
+import 'bloc/aula.dart';
 
 void main() {
   runApp(SkoreApp());
