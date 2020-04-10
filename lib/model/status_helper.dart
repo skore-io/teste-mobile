@@ -1,7 +1,7 @@
 import 'package:testemobileskore/model/status.dart';
 
 class StatusHelper{
-  Status getStatus(String status) {
+  static Status getStatus(String status) {
     switch (status) {
       case 'NOT_STARTED':
         return Status.NOT_STARTED;
