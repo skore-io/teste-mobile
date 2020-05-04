@@ -4,7 +4,7 @@ import 'package:http/http.dart';
 import 'package:marcelo_esser_test/http/web_client.dart';
 import 'package:marcelo_esser_test/model/lesson.dart';
 
-class ClassWebclient {
+class LessonsWebclient {
   Future<List<Lesson>> getAllLessons() async {
     final Response response = await client.get("$baseUrl/test");
     return toLessonList(response);
