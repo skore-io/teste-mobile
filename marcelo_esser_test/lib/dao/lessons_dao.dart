@@ -111,7 +111,7 @@ class LessonsDao {
 
       summaries.add(
         Summary(
-          percentage: percentage.toInt(),
+          percentage: percentage,
           id: value[_summaryId],
         ),
       );

@@ -45,8 +45,11 @@ class Lesson {
       json.containsKey(_summaryMap) && json[_summaryMap] != null;
 
   String getFormatedDate() {
-    DateFormat dateFormat = DateFormat();
-    dateFormat.addPattern("dd/MM/yyyy");
-    return dateFormat.format(DateTime.fromMillisecondsSinceEpoch(createdAt));
+    if (createdAt != null) {
+      DateFormat dateFormat = DateFormat();
+      dateFormat.addPattern("dd/MM/yyyy");
+      return dateFormat.format(DateTime.fromMillisecondsSinceEpoch(createdAt));
+    }
+    return "";
   }
 }
