@@ -5,6 +5,7 @@ import 'package:marcelo_esser_test/main.dart';
 import 'package:marcelo_esser_test/model/lesson.dart';
 import 'package:marcelo_esser_test/scenes/lessons/lessons_bloc.dart';
 import 'package:marcelo_esser_test/scenes/lessons/lessons_screen.dart';
+import 'package:marcelo_esser_test/widgets/dialogs/delete_lesson_dialog.dart';
 import 'package:marcelo_esser_test/widgets/lessons/lessons_list_view_item.dart';
 import 'package:mockito/mockito.dart';
 
@@ -27,10 +28,12 @@ void main() {
 
     ///mocking lessons on stream
     lessonBloc.inLessons.add(lessons());
+    print(lessonBloc.hashCode);
 
     await tester.pumpAndSettle();
 
     ///finding the lessons_screen (confirming that it is already on the screen)
+    print('lesson screen hash ${lessonScreen.hashCode}');
     expect(lessonScreen, findsOneWidget);
 
     ///checking if getAllLessons() is called
@@ -56,12 +59,32 @@ void main() {
     ///taping o delete button to realize the action
     await tester.tap(deleteItemButton);
 
+    await tester.pumpAndSettle();
+
+    ///checking if the delete dialgo is on screen
+    final transactionAuthDialog = find.byType(DeleteLessonDialog);
+    expect(transactionAuthDialog, findsOneWidget);
+
+    final deleteButton = find.widgetWithText(FlatButton, 'Delete');
+    expect(deleteButton, findsOneWidget);
+
+    ///taping o delete button to realize the action
+    await tester.tap(deleteButton);
+
+    ///mocking lessons on stream
+    lessonBloc.inLessons.add(lessons());
+
+    await tester.pumpAndSettle();
+
     ///checking if the delete action is being performed
     verify(await mockDao.deleteLessonBy(id: '114_3O81FOuWLZIlSDnRJHm1_349798'));
 
     ///checking if the delete action is being performed after the delete action
     ///to show the list without that item
     verify(await mockDao.findAll());
+
+    ///checking if returned to the lessons screen
+    expect(lessonScreen, findsOneWidget);
   });
 }
 
