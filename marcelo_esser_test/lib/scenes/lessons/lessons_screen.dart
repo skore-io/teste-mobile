@@ -27,7 +27,6 @@ class _LessonsScreenState extends State<LessonsScreen> {
         stream: lessonsBloc.outLessons,
         builder: (context, snapshot) {
           final List<Lesson> lessonList = snapshot.data;
-          print(snapshot.connectionState);
           switch (snapshot.connectionState) {
             case ConnectionState.none:
               break;

@@ -28,12 +28,10 @@ void main() {
 
     ///mocking lessons on stream
     lessonBloc.inLessons.add(lessons());
-    print(lessonBloc.hashCode);
 
     await tester.pumpAndSettle();
 
     ///finding the lessons_screen (confirming that it is already on the screen)
-    print('lesson screen hash ${lessonScreen.hashCode}');
     expect(lessonScreen, findsOneWidget);
 
     ///checking if getAllLessons() is called
