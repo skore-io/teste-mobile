@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:marcelo_esser_test/model/lesson.dart';
 import 'package:marcelo_esser_test/widgets/centerd_loader.dart';
+import 'package:marcelo_esser_test/widgets/dialogs/delete_lesson_dialog.dart';
 import 'package:marcelo_esser_test/widgets/lessons/lessons_list_view.dart';
 
 import 'lessons_bloc.dart';
@@ -39,7 +40,9 @@ class _LessonsScreenState extends State<LessonsScreen> {
               if (lessonList.isNotEmpty) {
                 return LessonsListView(
                   lessonList: lessonList,
-                  lessonsBloc: lessonsBloc,
+                  onDelete: (lesson) {
+                    delete(lesson, context, lessonsBloc);
+                  },
                 );
               } else {
                 return Center(
@@ -57,5 +60,18 @@ class _LessonsScreenState extends State<LessonsScreen> {
         },
       ),
     );
+  }
+
+  delete(Lesson lesson, BuildContext context, LessonsBloc bloc) async {
+    await showDialog(
+        context: context,
+        builder: (contextDialog) {
+          return DeleteLessonDialog(
+            lesson: lesson,
+            onConfirm: () {
+              bloc.delete(lesson.id);
+            },
+          );
+        });
   }
 }

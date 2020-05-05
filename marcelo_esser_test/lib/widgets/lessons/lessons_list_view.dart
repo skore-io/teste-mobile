@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:marcelo_esser_test/model/lesson.dart';
-import 'package:marcelo_esser_test/scenes/lessons/lessons_bloc.dart';
 import 'package:marcelo_esser_test/widgets/lessons/lessons_list_view_item.dart';
 
 class LessonsListView extends StatelessWidget {
   final List<Lesson> lessonList;
-  final LessonsBloc lessonsBloc;
+  final Function(Lesson lesson) onDelete;
 
-  const LessonsListView({
-    @required this.lessonList,
-    @required this.lessonsBloc,
-  });
+  const LessonsListView({@required this.lessonList, @required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +14,10 @@ class LessonsListView extends StatelessWidget {
       itemBuilder: (context, index) {
         final Lesson lesson = lessonList[index];
         return LessonItem(
-          lesson: lesson,
-          onDelete: () {
-            lessonsBloc.delete(lesson.id);
+          onDelete: (lesson) {
+            onDelete(lesson);
           },
+          lesson: lesson,
         );
       },
       itemCount: lessonList.length,

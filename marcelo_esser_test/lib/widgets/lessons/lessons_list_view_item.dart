@@ -3,7 +3,7 @@ import 'package:marcelo_esser_test/model/lesson.dart';
 
 class LessonItem extends StatelessWidget {
   final Lesson lesson;
-  final Function onDelete;
+  final Function(Lesson lesson) onDelete;
 
   const LessonItem({@required this.lesson, @required this.onDelete});
 
@@ -27,7 +27,7 @@ class LessonItem extends StatelessWidget {
                     key: Key(lesson.id),
                     color: Colors.transparent,
                     onPressed: () {
-                      onDelete();
+                      onDelete(lesson);
                     },
                     child: Icon(
                       Icons.delete,
