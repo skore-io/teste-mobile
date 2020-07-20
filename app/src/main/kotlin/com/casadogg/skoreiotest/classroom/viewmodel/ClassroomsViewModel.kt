@@ -21,6 +21,7 @@ class ClassroomsViewModel : ViewModel() {
     private val coroutineUiScope = CoroutineScope(Dispatchers.Main + coroutineJob)
 
     fun init(resources: Resources) {
+        if (_classrooms.value != null) return
         coroutineUiScope.launch {
             _classrooms.value = fetchClassrooms(resources)
         }
