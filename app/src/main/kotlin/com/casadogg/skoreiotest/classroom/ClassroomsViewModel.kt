@@ -9,7 +9,7 @@ import com.casadogg.skoreiotest.classroom.model.Classroom
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 
-class ClassroomViewModel : ViewModel() {
+class ClassroomsViewModel : ViewModel() {
     private val _classrooms = MutableLiveData<List<Classroom>>()
     val classrooms: LiveData<List<Classroom>>
         get() = _classrooms

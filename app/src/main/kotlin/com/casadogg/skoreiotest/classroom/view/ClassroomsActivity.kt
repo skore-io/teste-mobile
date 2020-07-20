@@ -7,24 +7,24 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.casadogg.skoreiotest.R
-import com.casadogg.skoreiotest.classroom.ClassroomViewModel
+import com.casadogg.skoreiotest.classroom.ClassroomsViewModel
 import kotlinx.android.synthetic.main.activity_classrooms.*
 
 class ClassroomsActivity : AppCompatActivity() {
-    private lateinit var classroomViewModel: ClassroomViewModel
+    private lateinit var classroomsViewModel: ClassroomsViewModel
     private val classroomAdapter = ClassroomAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_classrooms)
-        classroomViewModel = ViewModelProvider(this)[ClassroomViewModel::class.java]
+        classroomsViewModel = ViewModelProvider(this)[ClassroomsViewModel::class.java]
         classroomsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = classroomAdapter
         }
-        classroomViewModel.classrooms.observe(this, Observer { classrooms ->
+        classroomsViewModel.classrooms.observe(this, Observer { classrooms ->
             classroomAdapter.dataset = classrooms
         })
-        classroomViewModel.fetchClassrooms(resources)
+        classroomsViewModel.fetchClassrooms(resources)
     }
 }
