@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.casadogg.skoreiotest.R
-import com.casadogg.skoreiotest.classroom.ClassroomsViewModel
+import com.casadogg.skoreiotest.classroom.viewmodel.ClassroomsViewModel
 import kotlinx.android.synthetic.main.activity_classrooms.*
 
 class ClassroomsActivity : AppCompatActivity() {
@@ -25,6 +25,6 @@ class ClassroomsActivity : AppCompatActivity() {
         classroomsViewModel.classrooms.observe(this, Observer { classrooms ->
             classroomAdapter.dataset = classrooms
         })
-        classroomsViewModel.fetchClassrooms(resources)
+        classroomsViewModel.init(resources)
     }
 }
