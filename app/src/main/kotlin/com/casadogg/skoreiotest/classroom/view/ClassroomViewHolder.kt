@@ -13,9 +13,12 @@ class ClassroomViewHolder(
     layoutInflater.inflate(R.layout.viewholder_classroom, null, false)
 ) {
     fun bind(classroom: Classroom) {
-        itemView.nameText.text = classroom.name
-        itemView.creationDateText.text = getFormattedDate(classroom.createdAt)
-        itemView.idText.text = classroom.id
+        itemView.apply {
+            nameText.text = classroom.name
+            creationDateText.text = getFormattedDate(classroom.createdAt)
+            idText.text = classroom.id
+            progress.percentage = classroom.summary.percentage
+        }
     }
 
     private fun getFormattedDate(millis: Long): String =

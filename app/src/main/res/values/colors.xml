@@ -3,4 +3,6 @@
     <color name="colorPrimary">#00ceb2</color>
     <color name="colorPrimaryDark">#006759</color>
     <color name="colorAccent">#f4ad22</color>
+    <color name="colorAccentLight">#fadc86</color>
+    <color name="kokiri">#88D453</color>
 </resources>
