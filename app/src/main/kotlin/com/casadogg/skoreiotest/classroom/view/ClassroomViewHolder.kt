@@ -1,6 +1,7 @@
 package com.casadogg.skoreiotest.classroom.view
 
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.casadogg.skoreiotest.R
 import com.casadogg.skoreiotest.classroom.model.Classroom
@@ -8,16 +9,21 @@ import kotlinx.android.synthetic.main.viewholder_classroom.view.*
 import java.text.SimpleDateFormat
 
 class ClassroomViewHolder(
-    layoutInflater: LayoutInflater
+    layoutInflater: LayoutInflater,
+    parent: ViewGroup
 ) : RecyclerView.ViewHolder(
-    layoutInflater.inflate(R.layout.viewholder_classroom, null, false)
+    layoutInflater.inflate(R.layout.viewholder_classroom, parent, false)
 ) {
-    fun bind(classroom: Classroom) {
+    fun bind(classroom: Classroom, onDelete: (position: Int) -> Unit) {
         itemView.apply {
             nameText.text = classroom.name
             creationDateText.text = getFormattedDate(classroom.createdAt)
             idText.text = classroom.id
             progress.percentage = classroom.summary.percentage
+        }
+
+        itemView.deleteButton.setOnClickListener {
+            onDelete(adapterPosition)
         }
     }
 

@@ -12,7 +12,9 @@ import kotlinx.android.synthetic.main.activity_classrooms.*
 
 class ClassroomsActivity : AppCompatActivity() {
     private lateinit var classroomsViewModel: ClassroomsViewModel
-    private val classroomAdapter = ClassroomAdapter()
+    private val classroomAdapter = ClassroomAdapter(
+        onDelete = { classroomsViewModel.onClassroomDeleted(it) }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,7 @@ class ClassroomsActivity : AppCompatActivity() {
             adapter = classroomAdapter
         }
         classroomsViewModel.classrooms.observe(this, Observer { classrooms ->
-            classroomAdapter.dataset = classrooms
+            classroomAdapter.setDataset(classrooms)
         })
         classroomsViewModel.init(resources)
     }

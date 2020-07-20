@@ -13,9 +13,9 @@ import java.util.*
 import kotlin.Comparator
 
 class ClassroomsViewModel : ViewModel() {
-    private val _classrooms = MutableLiveData<List<Classroom>>()
+    private val _classrooms = MutableLiveData<MutableList<Classroom>>()
     val classrooms: LiveData<List<Classroom>>
-        get() = _classrooms
+        get() = _classrooms as LiveData<List<Classroom>>
 
     private val coroutineJob = Job()
     private val coroutineUiScope = CoroutineScope(Dispatchers.Main + coroutineJob)
@@ -27,11 +27,15 @@ class ClassroomsViewModel : ViewModel() {
         }
     }
 
-    private suspend fun fetchClassrooms(resources: Resources): List<Classroom> {
+    fun onClassroomDeleted(deletedClassroom: Classroom) {
+        _classrooms.value?.remove(deletedClassroom)
+    }
+
+    private suspend fun fetchClassrooms(resources: Resources): MutableList<Classroom> {
         return withContext(Dispatchers.IO) {
             val inputStream = resources.openRawResource(R.raw.classrooms)
             val mapper = jacksonObjectMapper()
-            val classrooms = mapper.readValue<List<Classroom>>(inputStream)
+            val classrooms = mapper.readValue<MutableList<Classroom>>(inputStream)
             inputStream.close()
             classrooms.sortByCreationDateDescending()
         }
@@ -42,8 +46,8 @@ class ClassroomsViewModel : ViewModel() {
         coroutineJob.cancel()
     }
 
-    private fun List<Classroom>.sortByCreationDateDescending(): List<Classroom> =
+    private fun MutableList<Classroom>.sortByCreationDateDescending(): MutableList<Classroom> =
         this.sortedWith(Comparator { classroom1, classroom2 ->
             Date(classroom2.createdAt).compareTo(Date(classroom1.createdAt))
-        })
+        }).toMutableList()
 }
