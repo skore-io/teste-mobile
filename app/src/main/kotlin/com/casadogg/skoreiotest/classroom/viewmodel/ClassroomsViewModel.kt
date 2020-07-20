@@ -9,6 +9,8 @@ import com.casadogg.skoreiotest.classroom.model.Classroom
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.*
+import java.util.*
+import kotlin.Comparator
 
 class ClassroomsViewModel : ViewModel() {
     private val _classrooms = MutableLiveData<List<Classroom>>()
@@ -28,9 +30,9 @@ class ClassroomsViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             val inputStream = resources.openRawResource(R.raw.classrooms)
             val mapper = jacksonObjectMapper()
-            mapper.readValue<List<Classroom>>(inputStream).also {
-                inputStream.close()
-            }
+            val classrooms = mapper.readValue<List<Classroom>>(inputStream)
+            inputStream.close()
+            classrooms.sortByCreationDateDescending()
         }
     }
 
@@ -38,4 +40,9 @@ class ClassroomsViewModel : ViewModel() {
         super.onCleared()
         coroutineJob.cancel()
     }
+
+    private fun List<Classroom>.sortByCreationDateDescending(): List<Classroom> =
+        this.sortedWith(Comparator { classroom1, classroom2 ->
+            Date(classroom2.createdAt).compareTo(Date(classroom1.createdAt))
+        })
 }
