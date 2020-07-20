@@ -14,7 +14,7 @@ class ClassroomViewHolder(
 ) {
     fun bind(classroom: Classroom) {
         itemView.nameText.text = classroom.name
-        itemView.creationDateText.text = getFormattedDate(classroom.createdAtMillis)
+        itemView.creationDateText.text = getFormattedDate(classroom.createdAt)
         itemView.idText.text = classroom.id
     }
 
