@@ -1,31 +1,13 @@
 <h1 align="center">Teste Mobile</h1>
 
-<h5 align="center">Nosso Teste para conhecer como você codifica no dia-dia!</h5>
+<h3>Tecnologias Usadas</h3>
 
-
-<h3>Tecnologias na Skore</h3>
-
-<p>Nossa aplicação mobile possui as seguintes tecnologias:</p>
+<p>Esta aplicação mobile possui as seguintes tecnologias:</p>
 
 - Flutter
-- BloC Pattern
-- Dart
-- Kotlin
-- Swift
-
-Deixamos como sugestão que utilize uma ou mais tecnologias listadas acima, porém fique à vontade para utilizar aquilo que te deixa mais confiante.
-
-<h3>Observações</h3>
-
-Está é uma avaliação básica de código.
-
-O objetivo é conhecer sua familiaridade com o código apresentado.
-
-Recomendamos que você não gaste mais do que 4 - 6 horas.
-
-Faça um fork deste repostório.
-
-Ao finalizar o teste, submeta um pull request para o repositório que nosso time será notificado.
+- Arquitetura orientada a pacotes
+- Getx Pattern
+- Getx
 
 <h3>Tarefas</h3>
 
@@ -88,21 +70,14 @@ Dado o Json abaixo apresente:
 <h3>Requisitos</h3>
 Crie a seguinte interface que contenha uma lista com os itens declarados acima, essa lista deve apresentar as seguintes informações:
 
-- [ ] O nome da aula;
-- [ ] A data de criação em dd/MM/yyyy;
-- [ ] O ID da Aula;
-- [ ] Quando a aula estiver completa deve apresentar um ícone de √ em verde;
-- [ ] Quando a aula ainda não estiver iniciada não deverá apresentar nenhum ícone;
-- [ ] Quando a aula estiver em andamento deve apresentar a porcentagem do progresso;
-- [ ] A lista deve estar ordenada por ordem de criação;
-- [ ] Todos os itens devem ter um botão de exclusão funcional;
-
-<h3>Dicas</h3>
-
-- Faça o teste com calma e respeite os requisitos solicitados.
-- Caso tenha alguma dúvida, informe no PR.
-- Fique à vontade para fazer melhorias em sua lista. 
-- Testes são sempre bem-vindos.
+- [ X ] O nome da aula;
+- [ X ] A data de criação em dd/MM/yyyy;
+- [ X ] O ID da Aula;
+- [ X ] Quando a aula estiver completa deve apresentar um ícone de √ em verde;
+- [ X ] Quando a aula ainda não estiver iniciada não deverá apresentar nenhum ícone;
+- [ X ] Quando a aula estiver em andamento deve apresentar a porcentagem do progresso;
+- [ X ] A lista deve estar ordenada por ordem de criação;
+- [ X ] Todos os itens devem ter um botão de exclusão funcional;
  
 
 
