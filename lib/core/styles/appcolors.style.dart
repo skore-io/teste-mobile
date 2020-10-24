@@ -17,7 +17,7 @@ class AppColors {
 
   static const Color YELLOW = Color(0xFFFFC748);
 
-  static const Color SHADOW = Color.fromRGBO(166, 171, 189, 0.53);
+  static const Color SHADOW = Color.fromRGBO(166, 171, 189, 0.2);
 
   static const Color PRIMARY = GREEN00;
   static const Color SUCCESS = GREEN01;

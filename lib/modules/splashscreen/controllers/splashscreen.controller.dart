@@ -1,11 +1,10 @@
-class SplashscreenController {
-  SplashscreenController() {
-    changeRoute();
-  }
+import 'package:get/get.dart';
+import 'package:skoreio/core/routes/app.routes.dart';
 
+class SplashscreenController {
   changeRoute() {
     Future.delayed(const Duration(seconds: 3), () {
-      // Get.offAndToNamed(AppRoutes.SPLASHSCREEN);
+      Get.offAndToNamed(AppRoutes.HOME);
     });
   }
 }

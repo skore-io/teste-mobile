@@ -4,8 +4,10 @@
 
 import 'dart:convert';
 
-class ClassesModel {
-  ClassesModel({
+import 'package:intl/intl.dart';
+
+class ClassModel {
+  ClassModel({
     this.companyId,
     this.createdAt,
     this.name,
@@ -15,19 +17,21 @@ class ClassesModel {
   });
 
   final String companyId;
-  final int createdAt;
+  final DateTime createdAt;
   final String name;
   final String id;
   final String status;
   final Summary summary;
 
-  factory ClassesModel.fromRawJson(String str) => ClassesModel.fromJson(json.decode(str));
+  String get createdAtFormatted => DateFormat("dd/MM/yyyy HH:mm").format(createdAt);
+
+  factory ClassModel.fromRawJson(String str) => ClassModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory ClassesModel.fromJson(Map<String, dynamic> json) => ClassesModel(
+  factory ClassModel.fromJson(Map<String, dynamic> json) => ClassModel(
         companyId: json["company_id"] == null ? null : json["company_id"],
-        createdAt: json["created_at"] == null ? null : json["created_at"],
+        createdAt: json["created_at"] == null ? null : DateTime.fromMillisecondsSinceEpoch(json["created_at"]),
         name: json["name"] == null ? null : json["name"],
         id: json["id"] == null ? null : json["id"],
         status: json["status"] == null ? null : json["status"],
@@ -36,7 +40,7 @@ class ClassesModel {
 
   Map<String, dynamic> toJson() => {
         "company_id": companyId == null ? null : companyId,
-        "created_at": createdAt == null ? null : createdAt,
+        "created_at": createdAt == null ? null : createdAtFormatted,
         "name": name == null ? null : name,
         "id": id == null ? null : id,
         "status": status == null ? null : status,
@@ -56,10 +60,10 @@ class Summary {
   String toRawJson() => json.encode(toJson());
 
   factory Summary.fromJson(Map<String, dynamic> json) => Summary(
-        percentage: json["percentage"] == null ? null : json["percentage"],
+        percentage: json["percentage"] == null ? 0 : json["percentage"],
       );
 
   Map<String, dynamic> toJson() => {
-        "percentage": percentage == null ? null : percentage,
+        "percentage": percentage == null ? 0 : percentage,
       };
 }
