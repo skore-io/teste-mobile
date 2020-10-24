@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skoreio/core/routes/pages.routes.dart';
+import 'package:skoreio/core/styles/apptheme.style.dart';
+
+import 'bindings/initial.binding.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -7,10 +11,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Skore Classes',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: AppTheme.themeData,
+      getPages: PagesRoutes.routes,
+      initialRoute: PagesRoutes.INITIAL,
+      initialBinding: InitialBinding(),
     );
   }
 }
