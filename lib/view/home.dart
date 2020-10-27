@@ -114,11 +114,7 @@ class _HomeState extends State<Home> {
   }
 
   Widget progressCircular(int percentage) {
-    return percentage == 0
-        ? Container(
-            width: 20,
-          )
-        : Container(
+    return Container(
             width: 40,
             child: CircularPercentIndicator(
               percent: percentage * 0.01,
@@ -127,7 +123,7 @@ class _HomeState extends State<Home> {
                   : Icon(Icons.done),
               progressColor: Colors.green,
               radius: 45.0,
-              lineWidth: 5.0,
+              lineWidth: 4.0,
             ),
           );
   }

@@ -1,9 +1,9 @@
 # Class Planner
+
 Olá, sou a Raquel e obrigada pela oportunidade.
 
-O arquivo executável do aplicativo Class Planner para Android está disponível em:
+Para executar o aplicativo Class Planner para Android use o comando no terminal:
 
-> /build/app/outputs/apk/release/app_release.apk 
+> flutter build apk
 
 Qualquer dúvida estou a disposição pelo e-mail raquelmartins203@yahoo.com.br
-
