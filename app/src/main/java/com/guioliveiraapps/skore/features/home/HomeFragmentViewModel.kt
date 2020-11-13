@@ -17,6 +17,8 @@ class HomeFragmentViewModel(
     private val dispatcher: CoroutineContextProvider
 ) : ViewModel() {
 
+    var doRequest = true
+
     val LOADING_DISPLAYED_CHILD: Int = 0
     val SUCCESS_DISPLAYED_CHILD: Int = 1
     val ERROR_DISPLAYED_CHILD: Int = 2
@@ -32,6 +34,11 @@ class HomeFragmentViewModel(
 
     fun getClasses() {
         viewModelScope.launch(dispatcher.IO) {
+            if (!doRequest) {
+                return@launch
+            }
+            doRequest = false
+
             val apiResult = classRepository.getClasses()
 
             if (apiResult is ApiResult.Success) {

@@ -94,9 +94,9 @@ class ClassesAdapter(
         return "$value%"
     }
 
-    private fun convertLongToTime(time: Long): String {
-        val sdf = SimpleDateFormat("dd/MM/yyyy")
-        val date = Date(time * 1000)
-        return sdf.format(date)
+    fun convertLongToTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("dd/MM/yyyy")
+        return format.format(date)
     }
 }
