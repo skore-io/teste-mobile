@@ -42,7 +42,8 @@ class HomeFragmentViewModel(
             val apiResult = classRepository.getClasses()
 
             if (apiResult is ApiResult.Success) {
-                _classes.postValue(apiResult.result)
+                val sorted = apiResult.result.sortedBy { it.createdAt }
+                _classes.postValue(ArrayList(sorted))
                 _screenState.postValue(ScreenState.Success)
                 return@launch
             }
