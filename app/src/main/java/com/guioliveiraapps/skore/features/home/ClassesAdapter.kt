@@ -9,6 +9,8 @@ import com.guioliveiraapps.skore.model.Class
 import com.guioliveiraapps.skore.model.StatusEnum
 import kotlinx.android.synthetic.main.item_class.view.*
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDateTime
 import java.util.*
 
 class ClassesAdapter(
@@ -95,8 +97,8 @@ class ClassesAdapter(
     }
 
     fun convertLongToTime(time: Long): String {
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
         val date = Date(time)
-        val format = SimpleDateFormat("dd/MM/yyyy")
-        return format.format(date)
+        return sdf.format(date)
     }
 }

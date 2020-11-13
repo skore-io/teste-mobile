@@ -1,10 +1,10 @@
 package com.guioliveiraapps.skore.model
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class Class(
-    @Json(name = "company_id") val companyId: String,
-    @Json(name = "created_at") val createdAt: Long,
+    @SerializedName("company_id") val companyId: String,
+    @SerializedName("created_at") val createdAt: Long,
     val name: String,
     val id: String,
     val status: StatusEnum,
