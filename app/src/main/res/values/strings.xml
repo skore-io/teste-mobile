@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">skore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_error">Não foi possível carregar as aulas. Por favor, tente novamente mais tarde.</string>
+    <string name="n_o_existem_mais_aulas_para_serem_mostradas">Não existem mais aulas para serem mostradas</string>
+</resources>

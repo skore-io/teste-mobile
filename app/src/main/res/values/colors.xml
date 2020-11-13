@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#46C0AB</color>
+    <color name="colorPrimaryDark">#46C0AB</color>
+    <color name="colorAccent">#46C0AB</color>
+    <color name="circle_bg">#DDD</color>
+</resources>
