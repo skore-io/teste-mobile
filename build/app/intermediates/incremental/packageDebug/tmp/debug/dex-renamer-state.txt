@@ -1,0 +1,4 @@
+#Sun Dec 06 17:52:42 BRST 2020
+base.0=/Volumes/MacData/mac mini/dev/flutter/teste-mobile/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
