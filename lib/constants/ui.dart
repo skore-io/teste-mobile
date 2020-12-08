@@ -7,7 +7,7 @@ const Color primaryTextColor = Color(0xff323f47); // Skore site headers text
 const Color secondaryTextColor = Color(0xff8d9499); // Skore site content text
 const Color idTextColor = Color(0xff8d9499); // Skore site content text
 
-const Color bodyBackground = Color(0xfffbfbfb);
+const Color bodyBackground = Color(0xfff0f0f0);
 
 const TextStyle primaryText = TextStyle(
   color: primaryTextColor,

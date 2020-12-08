@@ -16,7 +16,8 @@ class ClassListScreen extends StatelessWidget {
           stream: _bloc.outClasses,
           builder: (context, snapshot) {
             return ListView(
-              padding: EdgeInsets.all(15),
+              shrinkWrap: true,
+              padding: EdgeInsets.all(8),
               children: snapshot.hasData
                 ?
               snapshot.data.map((item) => ClassCard(classInfo: item,)).toList()

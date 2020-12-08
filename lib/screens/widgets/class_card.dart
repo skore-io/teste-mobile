@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:teste_mobile/blocs/classes_bloc.dart';
 import 'package:teste_mobile/constants/ui.dart';
 import 'package:teste_mobile/models/class.dart';
-import 'package:teste_mobile/screens/widgets/progress_bar.dart';
+import 'package:teste_mobile/screens/widgets/progress.dart';
 
 class ClassCard extends StatelessWidget {
 
@@ -14,55 +14,66 @@ class ClassCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    IconData _leading;
-    Color _leadingColor;
-    if(classInfo.summary.percentage == 100){
-      _leading = Icons.check;
-      _leadingColor = primary;
-    }else if(classInfo.summary.percentage == null) {
-      _leading = Icons.check;
-      _leadingColor = Colors.transparent;
-    }else{
-      _leading = Icons.class__outlined;
-      _leadingColor = secondaryTextColor;
-    }
     final _bloc = BlocProvider.of<ClassesBloc>(context);
-    print(classInfo.toMap());
-    return ListTile(
+    return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
-      tileColor: Colors.white,
-      leading: Icon(
-        _leading,
-        color: _leadingColor,
-      ),
-      title: Text(
-        classInfo.name,
-        style: primaryText,
-      ),
-      subtitle: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            DateFormat('dd/MM/yyy').format(DateTime.fromMillisecondsSinceEpoch(classInfo.createdAt)),
-            style: secondaryText,
+      color: Colors.white,
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      child: Container(
+        child: ListTile(
+          key: Key(classInfo.id),
+          contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+          leading: buildLeading(classInfo.status),
+          title: Text(
+            classInfo.name,
+            style: primaryText,
           ),
-          Text(
-            '${classInfo.id}',
-            style: idText,
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                DateFormat('dd/MM/yyy')
+                  .format(DateTime.fromMillisecondsSinceEpoch(classInfo.createdAt)),
+                style: secondaryText,
+              ),
+              Text(
+                classInfo.id,
+                style: idText,
+              ),
+            ],
           ),
-          ProgressBar(progress: classInfo.summary.percentage),
-        ],
-      ),
-      isThreeLine: true,
-      trailing: IconButton(
-        onPressed: () => _bloc.remove(classInfo.id),
-        icon: Icon(
-          Icons.delete_outline,
-          color: secondaryTextColor,
+          trailing: IconButton(
+            icon: Icon(
+              Icons.delete_outline,
+              color: secondaryTextColor,
+            ),
+            onPressed: () => _bloc.remove(classInfo.id),
+          ),
         ),
       ),
+    );
+  }
+
+  Widget buildLeading(Status status){
+    Widget _child;
+    switch(classInfo.status){
+      case Status.COMPLETED:
+        _child = Icon(
+          Icons.check,
+          color: primary,
+        );
+        break;
+      case Status.IN_PROGRESS:
+        _child = Progress(progress: classInfo.summary.percentage);
+        break;
+      case Status.NOT_STARTED:
+    }
+    return Container(
+      height: 50,
+      width: 50,
+      child: _child,
     );
   }
 }

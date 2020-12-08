@@ -3,7 +3,7 @@ class Class {
   int createdAt;
   String name;
   String id;
-  String status;
+  Status status;
   Summary summary;
 
   Class({
@@ -21,7 +21,7 @@ class Class {
       createdAt: json["created_at"] == null ? null : json["created_at"],
       name: json["name"] == null ? null : json["name"],
       id: json["id"] == null ? null : json["id"],
-      status: json["status"] == null ? null : json["status"],
+      status: json["status"] == null ? null : Status.values.firstWhere((element) => element.toString().split('.')[1] == json["status"]),
       summary: json["summary"] == null ? null : Summary.fromMap(json["summary"]),
     );
   }
@@ -31,7 +31,7 @@ class Class {
     "created_at": createdAt == null ? null : createdAt,
     "name": name == null ? null : name,
     "id": id == null ? null : id,
-    "status": status == null ? null : status,
+    "status": status == null ? null : status.toString().split('.')[1],
     "summary": summary == null ? null : summary.toMap(),
   };
 }
@@ -48,4 +48,10 @@ class Summary {
   Map<String, dynamic> toMap() => {
     "percentage": percentage
   };
+}
+
+enum Status {
+  NOT_STARTED,
+  IN_PROGRESS,
+  COMPLETED
 }
