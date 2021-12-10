@@ -1,35 +1,26 @@
-<h1 align="center">Teste Mobile</h1>
+<h1 align="center">Mobile Challenge</h1>
 
-<h5 align="center">Nosso Teste para conhecer como você codifica no dia-dia!</h5>
+<p align="center">Um pouco de código para conhecermos como você codifica no dia a dia!</p>
 
-
-<h3>Tecnologias na Skore</h3>
-
-<p>Nossa aplicação mobile possui as seguintes tecnologias:</p>
-
-- Flutter
-- BloC Pattern
-- Dart
-- Kotlin
-- Swift
-
-Deixamos como sugestão que utilize uma ou mais tecnologias listadas acima, porém fique à vontade para utilizar aquilo que te deixa mais confiante.
-
-<h3>Observações</h3>
+<h3>Objetivo</h3>
 
 Está é uma avaliação básica de código.
 
-O objetivo é conhecer sua familiaridade com o código apresentado.
+O objetivo é conhecer como soluciona o problema apresentado, quais caminhos escolhe, por quais motivos etc.
 
-Recomendamos que você não gaste mais do que 4 - 6 horas.
+<b>Obs</b>.: Recomendamos que você não gaste mais que 4 - 6 horas, mas não se apegue ao tempo.
+
+<br>
+<h3>Como entregar</h3>
 
 Faça um fork deste repostório.
 
-Ao finalizar o teste, submeta um pull request para o repositório que nosso time será notificado.
+Ao finalizar o teste, submeta um <b><i>pull request</b></i> para o repositório que nosso time será notificado.
 
+<br>
 <h3>Tarefas</h3>
 
-Dado o Json abaixo apresente:
+Dado o JSON:
 
 ````
 [
@@ -85,8 +76,7 @@ Dado o Json abaixo apresente:
     }
 ]
 ````
-<h3>Requisitos</h3>
-Crie a seguinte interface que contenha uma lista com os itens declarados acima, essa lista deve apresentar as seguintes informações:
+Crie uma aplicação que contenha uma lista com os itens declarados acima, essa lista deve apresentar as seguintes informações:
 
 - [ ] O nome da aula;
 - [ ] A data de criação em dd/MM/yyyy;
@@ -97,13 +87,14 @@ Crie a seguinte interface que contenha uma lista com os itens declarados acima, 
 - [ ] A lista deve estar ordenada por ordem de criação;
 - [ ] Todos os itens devem ter um botão de exclusão funcional;
 
+<br>
 <h3>Dicas</h3>
 
 - Faça o teste com calma e respeite os requisitos solicitados.
-- Caso tenha alguma dúvida, informe no PR.
-- Fique à vontade para fazer melhorias em sua lista. 
-- Testes são sempre bem-vindos.
- 
+- Caso tenha alguma dúvida, nos procure ou informe no PR.
+- Fique à vontade para fazer melhorias em sua lista.
+- Para construir a aplicação, preferencialmente utilizar alguma das seguintes linguagens: Dart/Flutter, Kotlin ou Swift.
+
 
 
 
