@@ -1,5 +1,11 @@
 <h1 align="center">Mobile Challenge</h1>
 
+
+<h1>Resultado</h1>
+<p>
+    <img src="screenshot/image.png"/>
+</p>
+
 <p align="center">Um pouco de código para conhecermos como você codifica no dia a dia!</p>
 
 <h3>Objetivo</h3>
@@ -94,10 +100,5 @@ Crie uma aplicação que contenha uma lista com os itens declarados acima, essa 
 - Caso tenha alguma dúvida, nos procure ou informe no PR.
 - Fique à vontade para fazer melhorias em sua lista.
 - Para construir a aplicação, preferencialmente utilizar alguma das seguintes linguagens: Dart/Flutter, Kotlin ou Swift.
-
-<h1>Resultado</h1>
-<p>
-    <img src="screenshot/image.png"/>
-</p>
 
 
