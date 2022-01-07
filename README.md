@@ -96,7 +96,7 @@ Crie uma aplicação que contenha uma lista com os itens declarados acima, essa 
 - Para construir a aplicação, preferencialmente utilizar alguma das seguintes linguagens: Dart/Flutter, Kotlin ou Swift.
 
 <h1>Resultado</h1>
-![Screenshot](.image.png)
+![Screenshot](./image.png)
 
 
 
