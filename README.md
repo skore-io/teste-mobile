@@ -97,7 +97,7 @@ Crie uma aplicação que contenha uma lista com os itens declarados acima, essa 
 
 <h1>Resultado</h1>
 <p>
-    <img src="screenshot/image.png" width="220" height="240" />
+    <img src="screenshot/image.png"/>
 </p>
 
 
