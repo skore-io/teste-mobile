@@ -6,12 +6,21 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          Text('Aulas'),
-          CircularProgressIndicator(),
-        ],
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: const [
+            Text(
+              'Aulas',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            CircularProgressIndicator(),
+          ],
+        ),
       ),
     );
   }
