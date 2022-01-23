@@ -19,14 +19,8 @@ class ClassItemWidget extends StatefulWidget {
 class _ClassItemWidgetState extends State<ClassItemWidget> {
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: Key(widget.classModel.id),
-      background: makeDeleteButton(),
-      behavior: HitTestBehavior.deferToChild,
-      onDismissed: (_) => widget.onDelete(widget.classModel.id),
-      child: Card(
-        child: makeProgressIndicatorLayout(context),
-      ),
+    return Card(
+      child: makeProgressIndicatorLayout(context),
     );
   }
 
@@ -35,6 +29,7 @@ class _ClassItemWidgetState extends State<ClassItemWidget> {
         children: [
           makeMainColumn(context),
           makeProgressIndicator(),
+          makeDeleteButton(),
         ],
       );
 
@@ -123,11 +118,30 @@ class _ClassItemWidgetState extends State<ClassItemWidget> {
     }
   }
 
-  Widget makeDeleteButton() => Container(
-        color: Colors.red,
-        child: const Icon(
-          Icons.delete,
-          color: Colors.white,
+  Widget makeDeleteButton() => Padding(
+        padding: const EdgeInsets.all(5),
+        child: FractionallySizedBox(
+          widthFactor: 1,
+          child: ElevatedButton.icon(
+            key: Key('Button${widget.classModel.id}'),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.red),
+            ),
+            label: const Text(
+              'Excluir',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              widget.onDelete(widget.classModel.id);
+            },
+          ),
         ),
       );
 }

@@ -93,7 +93,9 @@ void main() {
     expect(find.byType(LinearProgressIndicator), findsNothing);
   });
 
-  testWidgets('Find widgets when drag widget', (tester) async {
+  testWidgets('Test delete button push', (tester) async {
+    bool isDeleted = false;
+
     final model = ClassItemModel(
       id: '114_0v62DokeArxPA9oDSBst_349785',
       status: ClassStatus.notStated,
@@ -103,17 +105,29 @@ void main() {
       percentage: 100,
     );
 
-    await _createWidget(tester, model: model);
+    await _createWidget(
+      tester,
+      model: model,
+      onDelete: (_) {
+        isDeleted = true;
+      },
+    );
 
-    await tester.drag(find.byType(ClassItemWidget), const Offset(10000, 0));
+    final button = find.byKey(Key('Button${model.id}'), skipOffstage: false);
+
+    await tester.ensureVisible(button);
     await tester.pump();
-    expect(find.byIcon(Icons.delete), findsOneWidget);
+    await tester.tap(button);
+    await tester.pump();
+
+    expect(isDeleted, isTrue);
   });
 }
 
 Future<void> _createWidget(
   WidgetTester tester, {
   required ClassItemModel model,
+  Function(String)? onDelete,
 }) async {
   await tester.pumpWidget(
     MaterialApp(
@@ -127,7 +141,7 @@ Future<void> _createWidget(
         GlobalCupertinoLocalizations.delegate,
       ],
       home: ClassItemWidget(
-        onDelete: (_) {},
+        onDelete: onDelete ?? (_) {},
         classModel: model,
       ),
     ),
