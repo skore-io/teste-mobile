@@ -23,19 +23,21 @@ class ClassItemModel extends Equatable {
       return ClassItemModel(
         companyId: map['company_id'] as String,
         createdAt:
-            DateTime.fromMicrosecondsSinceEpoch(map['created_at'] as int),
+            DateTime.fromMillisecondsSinceEpoch(map['created_at'] as int),
         name: map['name'] as String,
         id: map['id'] as String,
         status: ClassStatusConverter.fromString(
           map['status'] as String,
         ),
-        percentage:
-            (map['summary'] as Map<String, dynamic>)['percentage'] as double,
+        percentage: (map['summary'] as Map<String, dynamic>)['percentage'],
       );
     } on Exception {
       return null;
     }
   }
+
+  static List<ClassItemModel?> fromMapList(List<dynamic> list) =>
+      list.map((e) => fromMap(e)).toList();
 
   static ClassItemModel? fromJson(String source) => ClassItemModel.fromMap(
         json.decode(source) as Map<String, dynamic>,
@@ -46,7 +48,7 @@ class ClassItemModel extends Equatable {
   final String name;
   final String id;
   final ClassStatus status;
-  final double? percentage;
+  final int? percentage;
 
   Map<String, dynamic> toMap() => {
         'company_id': companyId,
@@ -63,7 +65,7 @@ class ClassItemModel extends Equatable {
 
   ClassItemModel copyWith({
     ClassStatus? status,
-    double? percentage,
+    int? percentage,
   }) =>
       ClassItemModel(
         companyId: companyId,
