@@ -95,7 +95,4 @@ Crie uma aplicação que contenha uma lista com os itens declarados acima, essa 
 - Fique à vontade para fazer melhorias em sua lista.
 - Para construir a aplicação, preferencialmente utilizar alguma das seguintes linguagens: Dart/Flutter, Kotlin ou Swift.
 
-
-
-
-
+### Flutter Version: 2.8.1
