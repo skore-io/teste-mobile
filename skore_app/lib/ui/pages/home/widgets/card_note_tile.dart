@@ -44,7 +44,6 @@ class CardNoteTile extends StatelessWidget {
                 ),
                 Text(
                   data.name, style: const TextStyle(fontFamily: "quicksand", color: Colors.deepPurple, fontSize: 20,),
-                  
                   ),
                 Text(
                   C.createIn + StringExtension.makeFormatDate(data.createdAt), style: const TextStyle(fontFamily: "quicksand", color: Colors.black87, fontSize: 12),
