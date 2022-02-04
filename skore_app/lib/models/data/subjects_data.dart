@@ -1,16 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SubjectsData {
-
-
-  late String id, companyId, name, status;
+  late String id, companyId, name, status, idDocument;
   late int createdAt;
   late Map<String, dynamic> summary;
 
-
-
   SubjectsData.fromDocument(DocumentSnapshot document) {
-    id = document.id;
+    idDocument = document.id;
+    id = document.get("id");;
     companyId = document.get("company_id");
     name = document.get("name");
     status = document.get("status");
@@ -30,4 +27,5 @@ class SubjectsData {
       "summary":summary
     };
   }
+  
 }

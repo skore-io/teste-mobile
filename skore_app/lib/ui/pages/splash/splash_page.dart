@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skore_app/ui/shared/widgets/background_gradient.dart';
 
-
-
-
 class SplashPage extends StatefulWidget {
   const SplashPage({ Key? key }) : super(key: key);
 
@@ -13,16 +10,14 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
 
-
   @override
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3)).then((value) => {
+    Future.delayed(const Duration(seconds: 5)).then((value) => {
       Navigator.of(context).pushReplacementNamed("/home")
-
-
     });
+
   }
   @override
   Widget build(BuildContext context) {

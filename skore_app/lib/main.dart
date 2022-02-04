@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skore_app/controllers/subjects_manager.dart';
-import 'package:skore_app/ui/pages/home/home_page.dart';
+import 'package:skore_app/ui/pages/add_subject/ui/add_subject_page.dart';
+import 'package:skore_app/ui/pages/home/ui/home_page.dart';
 import 'package:skore_app/ui/pages/splash/splash_page.dart';
+import 'package:skore_app/ui/shared/const/c.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +15,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -25,21 +25,22 @@ class MyApp extends StatelessWidget {
         ),
       ],
     child: MaterialApp(
-      title: 'Skore App',
+      title: C.titleApp,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: (settings) {
           switch (settings.name) {
             case "/splash":
-              return MaterialPageRoute(builder: (_) => SplashPage());
+              return MaterialPageRoute(builder: (_) => const SplashPage());
             case "/home":
-              return MaterialPageRoute(builder: (_) => HomePage());
+              return MaterialPageRoute(builder: (_) => const HomePage());
+            case "/add-subject":
+              return MaterialPageRoute(builder: (_) => const AddSubjectPage());
             default:
-              return MaterialPageRoute(builder: (_) => SplashPage());
+              return MaterialPageRoute(builder: (_) => const SplashPage());
           }
         },
-
         initialRoute: "/splash",
     ),);
   }

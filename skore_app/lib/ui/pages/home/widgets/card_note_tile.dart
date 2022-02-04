@@ -1,6 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:skore_app/models/subjects_data.dart';
-import 'package:date_format/date_format.dart' as da;
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:skore_app/controllers/subjects_manager.dart';
+import 'package:skore_app/models/data/subjects_data.dart';
+import 'package:provider/provider.dart';
+import 'package:skore_app/ui/pages/home/widgets/progress_status_widget.dart';
+import 'package:skore_app/ui/shared/const/c.dart';
+import 'package:skore_app/ui/shared/utils/string_extension.dart';
 
 class CardNoteTile extends StatelessWidget {
   final SubjectsData data;
@@ -24,34 +30,45 @@ class CardNoteTile extends StatelessWidget {
             child: SizedBox(
               height: height,
               width: width,
-              child: Padding(padding: const EdgeInsets.all(10),
-              child: Column(children:  [
+              child: Padding(padding: const EdgeInsets.all(6),
+              child: Column(
+                children:  [
+                GestureDetector(
+                  onTap: (){
+                    context.read<SubjectsManager>().fetchDeleteSubject(data.idDocument);
+                  },
+                  child: Align(
+                  alignment: Alignment.topRight,
+                  child: Image.asset(C.closeIcon, height: 30, width: 30,),
+                ),
+                ),
                 Text(
-                  data.name, style: const TextStyle(fontFamily: "quicksand", color: Colors.black45, fontSize: 20),
+                  data.name, style: const TextStyle(fontFamily: "quicksand", color: Colors.deepPurple, fontSize: 20,),
                   
                   ),
+                Text(
+                  C.createIn + StringExtension.makeFormatDate(data.createdAt), style: const TextStyle(fontFamily: "quicksand", color: Colors.black87, fontSize: 12),
+                  ),
+                Card(
+                  elevation: 4,
+                  child: QrImage(
+                    data: data.id,
+                    version: QrVersions.auto,
+                    size: 140,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ProgressStatusWidget(data: data,),
                   Text(
-                  makeFormatDate(1574361972593), style: const TextStyle(fontFamily: "quicksand", color: Colors.black26, fontSize: 12),
-                  
-                  )
+                    StringExtension.statusSubject(data.status), style: const TextStyle(fontFamily: "quicksand", color: Colors.black45, fontSize: 10),
+                  ),
               ],),),
               ),
-
-            
           ),
         ),
       ],
     );
-  }
-
-  String makeFormatDate(int timestamp){
-    String date =  da.formatDate(DateTime.fromMillisecondsSinceEpoch(timestamp), [ da.dd,
-                                                                              '/',
-                                                                              da.mm,
-                                                                              '/',
-                                                                              da.yyyy]);
-  return date;
-                                                                        
-
   }
 }
