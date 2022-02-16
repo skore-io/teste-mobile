@@ -16,7 +16,7 @@ abstract class _HomeControllerBase with Store {
   }
 
   @observable
-  var todoClass = <TodoClassModel>[].asObservable();
+  var listTodoClass = <TodoClassModel>[].asObservable();
 
   @action
   Future<void> getList() async {
@@ -25,15 +25,18 @@ abstract class _HomeControllerBase with Store {
         (failure) =>
             asuka.showSnackBar(SnackBar(content: Text(failure.message!))),
         (result) {
-      result.sort((a, b) {
-        return a.createdAt.compareTo(b.createdAt);
-      });
-      todoClass = (result as List<TodoClassModel>).asObservable();
+      listTodoClass =
+          (listSortedByDate(result as List<TodoClassModel>)).asObservable();
     });
   }
 
   @action
-  removeItemList(int index) {
-    todoClass.removeAt(index);
+  removeItemList(int index) => listTodoClass.removeAt(index);
+
+  List<TodoClassModel> listSortedByDate(List<TodoClassModel> result) {
+    result.sort((a, b) {
+      return a.createdAt.compareTo(b.createdAt);
+    });
+    return result;
   }
 }

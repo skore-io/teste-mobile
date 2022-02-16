@@ -13,7 +13,8 @@ class HomeModule extends Module {
         Bind((i) => LocaleDataSourceImplementation(MockResponseApi())),
         Bind((i) => TodoRepositoryImpl(i())),
         Bind((i) => GetAllClassFromListImpl(i())),
-        Bind((i) => HomeController(i<GetAllClassFromListImpl>())),
+        Bind((i) => HomeController(i<GetAllClassFromListImpl>()),
+            isSingleton: true),
       ];
 
   @override
@@ -21,6 +22,8 @@ class HomeModule extends Module {
         ChildRoute(
           Modular.initialRoute,
           child: (context, args) => const HomePage(),
+          transition: TransitionType.fadeIn,
+          duration: const Duration(seconds: 2),
         )
       ];
 }

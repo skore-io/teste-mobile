@@ -7,43 +7,46 @@ import 'package:mobileteste/app/modules/home/presenter/controllers/home_controll
 
 class ListTileCustom extends StatelessWidget {
   final int index;
+
   ListTileCustom({
     Key? key,
     required this.index,
   }) : super(key: key);
+
   final controllerHome = Modular.get<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
         child: Container(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor.withOpacity(0.1),
               border: Border.all(color: Theme.of(context).primaryColor),
-              borderRadius: BorderRadius.circular(15)),
+              borderRadius: BorderRadius.circular(20)),
           child: ListTile(
             leading: IconButton(
               onPressed: () {
                 controllerHome.removeItemList(index);
               },
               icon: const Icon(
-                Icons.close,
+                Icons.remove_circle,
                 color: Colors.red,
               ),
             ),
             title: Text(
-              controllerHome.todoClass[index].name,
+              controllerHome.listTodoClass[index].name,
               style: Theme.of(context).textTheme.headline4,
             ),
-            trailing: controllerHome.todoClass[index].status == 'COMPLETED'
+            trailing: controllerHome.listTodoClass[index].status == 'COMPLETED'
                 ? const Icon(
                     Icons.done,
                     color: Colors.green,
                   )
-                : controllerHome.todoClass[index].status == 'IN_PROGRESS'
+                : controllerHome.listTodoClass[index].status == 'IN_PROGRESS'
                     ? Text(
-                        '${controllerHome.todoClass[index].summary.percentage}%',
+                        '${controllerHome.listTodoClass[index].summary.percentage}%',
                         style: Theme.of(context).textTheme.headline2,
                       )
                     : const SizedBox(
@@ -53,16 +56,18 @@ class ListTileCustom extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'id: ' + controllerHome.todoClass[index].id,
+                  controllerHome.listTodoClass[index].id,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle1!
+                      .subtitle2!
                       .copyWith(color: Theme.of(context).primaryColor),
                 ),
                 Text(
                   Functions().convertDateTimeinString(
-                      controllerHome.todoClass[index].createdAt),
-                  style: Theme.of(context).textTheme.subtitle2,
+                      controllerHome.listTodoClass[index].createdAt),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
             ),
