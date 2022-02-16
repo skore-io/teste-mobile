@@ -34,8 +34,8 @@ class TodoClassModel extends TodoClass {
   factory TodoClassModel.fromMap(Map<String, dynamic> map) {
     return TodoClassModel(
         companyId: map['company_id'],
-        createdAt:
-            Functions().convertDateTimeInFormatterDate(map['created_at']),
+        createdAt: Functions()
+            .convertMillisecondsSinceEpochInDateTime(map['created_at']),
         name: map['name'],
         id: map['id'],
         status: map['status'],

@@ -12,13 +12,13 @@ mixin _$HomeController on _HomeControllerBase, Store {
   final _$todoClassAtom = Atom(name: '_HomeControllerBase.todoClass');
 
   @override
-  List<TodoClassModel> get todoClass {
+  ObservableList<TodoClassModel> get todoClass {
     _$todoClassAtom.reportRead();
     return super.todoClass;
   }
 
   @override
-  set todoClass(List<TodoClassModel> value) {
+  set todoClass(ObservableList<TodoClassModel> value) {
     _$todoClassAtom.reportWrite(value, super.todoClass, () {
       super.todoClass = value;
     });
@@ -29,6 +29,20 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   Future<void> getList() {
     return _$getListAsyncAction.run(() => super.getList());
+  }
+
+  final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase');
+
+  @override
+  dynamic removeItemList(int index) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.removeItemList');
+    try {
+      return super.removeItemList(index);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

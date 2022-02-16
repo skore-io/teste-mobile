@@ -79,12 +79,12 @@ Dado o JSON:
 Crie uma aplicação que contenha uma lista com os itens declarados acima, essa lista deve apresentar as seguintes informações:
 
 - [x] O nome da aula;
-- [ ] A data de criação em dd/MM/yyyy;
+- [x] A data de criação em dd/MM/yyyy;
 - [x] O ID da Aula;
 - [x] Quando a aula estiver completa deve apresentar um ícone de √ em verde;
 - [x] Quando a aula ainda não estiver iniciada não deverá apresentar nenhum ícone;
 - [x] Quando a aula estiver em andamento deve apresentar a porcentagem do progresso;
-- [ ] A lista deve estar ordenada por ordem de criação;
+- [x] A lista deve estar ordenada por ordem de criação;
 - [x] Todos os itens devem ter um botão de exclusão funcional;
 
 <br>

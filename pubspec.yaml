@@ -38,6 +38,8 @@ dependencies:
   mobx: ^2.0.6+1
   dartz: ^0.10.1
   flutter_modular: ^4.4.0+1
+  intl: ^0.17.0
+  asuka: ^2.0.0
 
 dev_dependencies:
   flutter_test:

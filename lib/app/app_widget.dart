@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:asuka/asuka.dart' as asuka;
 
 import 'core/utils/theme/theme_data_custom.dart';
 
@@ -11,6 +12,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Mobile Teste',
       debugShowCheckedModeBanner: false,
+      builder: asuka.builder,
       theme: ThemeDataCustom().theme,
     ).modular();
   }
