@@ -3,10 +3,11 @@ import 'package:test_solution/data/models/class_model.dart';
 import 'package:test_solution/presenter/widgets/percent_indicator.dart';
 import 'package:intl/intl.dart';
 
-class ListItem extends StatelessWidget {
+class ClassesListItem extends StatelessWidget {
   final int index;
   final ClassModel classModel;
-  const ListItem(this.classModel, this.index, {Key? key}) : super(key: key);
+  const ClassesListItem(this.classModel, this.index, {Key? key})
+      : super(key: key);
 
   Widget checkStatus(int index) {
     if (index >= 0 && index <= 3) {

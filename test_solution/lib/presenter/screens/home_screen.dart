@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_solution/data/models/class_model.dart';
-import 'package:test_solution/presenter/widgets/list_item.dart';
+import 'package:test_solution/presenter/widgets/classes_list_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
-          return ListItem(classMockup, index);
+          return ClassesListItem(classMockup, index);
         },
       ),
     );
