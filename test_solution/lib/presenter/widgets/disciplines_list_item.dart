@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:test_solution/data/models/class_model.dart';
+import 'package:test_solution/data/models/discipline_model.dart';
 import 'package:test_solution/presenter/widgets/percent_indicator.dart';
 import 'package:intl/intl.dart';
 
-class ClassesListItem extends StatelessWidget {
-  final int index;
-  final ClassModel classModel;
-  const ClassesListItem(this.classModel, this.index, {Key? key})
+class DisciplinesListItem extends StatelessWidget {
+  final Function deleteMethod;
+  final DisciplineModel classModel;
+  const DisciplinesListItem(this.classModel, this.deleteMethod, {Key? key})
       : super(key: key);
 
-  Widget checkStatus(int index) {
+  Widget checkStatus() {
     final percentage = classModel.summary.percentage;
     if (percentage != null) {
       return PercentIndicator(percentage);
@@ -62,10 +62,13 @@ class ClassesListItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              checkStatus(index),
-              Icon(
-                Icons.delete,
-                color: Colors.red.shade600,
+              checkStatus(),
+              IconButton(
+                onPressed: () => deleteMethod(classModel),
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red.shade600,
+                ),
               ),
             ],
           ),

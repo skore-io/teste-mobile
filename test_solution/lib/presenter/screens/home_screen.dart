@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_solution/data/datasources/local/classes_local_datasource.dart';
-import 'package:test_solution/data/repositories/local/classes_local_repository.dart';
+import 'package:provider/provider.dart';
 import 'package:test_solution/presenter/controllers/home/home_state.dart';
 import 'package:test_solution/presenter/controllers/home/home_store.dart';
-import 'package:test_solution/presenter/widgets/classes_list_item.dart';
+import 'package:test_solution/presenter/widgets/disciplines_list_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,23 +12,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // var classMockup = const ClassModel(
-  //     companyId: "114",
-  //     createdAt: 1571323199864,
-  //     name: "Aula Álgebra",
-  //     id: "114_0v62DokeArxPA9oDSBst_349785",
-  //     status: "IN_PROGRESS",
-  //     summary: {"percentage": 20});
-
-  late HomeStore homeStore;
+  late final HomeStore _homeStore;
 
   @override
   void initState() {
     super.initState();
-    var datasource = ClassesLocalDatasource("assets/data/classes.json");
-    var repository = ClassesLocalRepository(datasource);
-    homeStore = HomeStore(repository);
-    homeStore.fetchClasses();
+    _homeStore = context.read<HomeStore>();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _homeStore.fetchDisciplines();
+    });
   }
 
   @override
@@ -39,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Solução - Teste Mobile'),
       ),
       body: ValueListenableBuilder<HomeState>(
-          valueListenable: homeStore,
+          valueListenable: _homeStore,
           builder: (context, state, child) {
             if (state is LoadingHomeState) {
               return const Center(
@@ -48,18 +39,32 @@ class _HomeScreenState extends State<HomeScreen> {
             }
 
             if (state is ErrorHomeState) {
-              return Center(child: Text(state.message));
-            }
-            if (state is SuccessHomeState) {
-              return ListView.builder(
-                itemCount: state.classesList.length,
-                itemBuilder: (context, index) {
-                  var classItem = state.classesList[index];
-                  return ClassesListItem(classItem, index);
-                },
+              return Center(
+                child: Text(
+                  state.message,
+                  style: const TextStyle(fontSize: 24.0),
+                ),
               );
             }
 
+            if (state is NoDataHomeState) {
+              return const Center(
+                  child: Text(
+                'No Data Found',
+                style: TextStyle(fontSize: 24.0),
+              ));
+            }
+
+            if (state is SuccessHomeState) {
+              return ListView.builder(
+                itemCount: state.disciplinesList.length,
+                itemBuilder: (context, index) {
+                  var classItem = state.disciplinesList[index];
+                  return DisciplinesListItem(
+                      classItem, _homeStore.deleteDiscipline);
+                },
+              );
+            }
             return const SizedBox();
           }),
     );

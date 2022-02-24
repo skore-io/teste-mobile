@@ -1,16 +1,18 @@
-import 'package:test_solution/data/models/class_model.dart';
+import 'package:test_solution/data/models/discipline_model.dart';
 
 abstract class HomeState {}
 
 class InitialHomeState extends HomeState {}
 
 class SuccessHomeState extends HomeState {
-  final List<ClassModel> classesList;
+  final List<DisciplineModel> disciplinesList;
 
-  SuccessHomeState(this.classesList);
+  SuccessHomeState(this.disciplinesList);
 }
 
 class LoadingHomeState extends HomeState {}
+
+class NoDataHomeState extends HomeState {}
 
 class ErrorHomeState extends HomeState {
   final String message;
