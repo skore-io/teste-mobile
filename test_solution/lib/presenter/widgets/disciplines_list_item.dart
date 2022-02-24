@@ -4,7 +4,7 @@ import 'package:test_solution/presenter/widgets/percent_indicator.dart';
 import 'package:intl/intl.dart';
 
 class DisciplinesListItem extends StatelessWidget {
-  final Function deleteMethod;
+  final Function(DisciplineModel) deleteMethod;
   final DisciplineModel disciplineModel;
   const DisciplinesListItem(this.disciplineModel, this.deleteMethod, {Key? key})
       : super(key: key);

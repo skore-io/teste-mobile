@@ -1,8 +1,8 @@
-import 'dart:convert';
+import 'package:equatable/equatable.dart';
 
-class SummaryModel {
+class SummaryModel extends Equatable {
   final dynamic percentage;
-  SummaryModel({
+  const SummaryModel({
     required this.percentage,
   });
 
@@ -14,22 +14,11 @@ class SummaryModel {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'percentage': percentage,
-    };
-  }
-
   factory SummaryModel.fromMap(Map<String, dynamic> map) {
     return SummaryModel(
       percentage: map['percentage'],
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory SummaryModel.fromJson(String source) =>
-      SummaryModel.fromMap(json.decode(source));
 
   @override
   String toString() => 'SummaryModel(percentage: $percentage)';
@@ -43,4 +32,9 @@ class SummaryModel {
 
   @override
   int get hashCode => percentage.hashCode;
+
+  @override
+  List<Object?> get props => [
+        percentage,
+      ];
 }

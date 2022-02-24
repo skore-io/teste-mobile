@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-
 import 'package:test_solution/data/models/summary_model.dart';
 
 class DisciplineModel extends Equatable {
@@ -38,17 +35,6 @@ class DisciplineModel extends Equatable {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'companyId': companyId,
-      'createdAt': createdAt,
-      'name': name,
-      'id': id,
-      'status': status,
-      'summary': summary.toMap(),
-    };
-  }
-
   factory DisciplineModel.fromMap(Map<String, dynamic> map) {
     return DisciplineModel(
       companyId: map['company_id'] ?? '',
@@ -59,11 +45,6 @@ class DisciplineModel extends Equatable {
       summary: SummaryModel.fromMap(map['summary']),
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory DisciplineModel.fromJson(String source) =>
-      DisciplineModel.fromMap(json.decode(source));
 
   @override
   String toString() {
