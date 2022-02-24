@@ -16,14 +16,13 @@ class DisciplinesLocalDatasource {
     if (mockDatabase.isEmpty && maxTurns == 0) {
       final jsonData = await rootBundle.loadString(jsonDataAsset);
       Iterable data = json.decode(jsonData);
-      final disciplinesList = List<DisciplineModel>.from(
+      mockDatabase = List<DisciplineModel>.from(
         data.map(
           (x) => DisciplineModel.fromMap(x),
         ),
       );
-      mockDatabase = disciplinesList;
       maxTurns = 1;
-      return disciplinesList;
+      return mockDatabase;
     } else {
       return mockDatabase;
     }

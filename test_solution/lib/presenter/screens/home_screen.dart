@@ -28,6 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Solução - Teste Mobile'),
+        actions: [
+          IconButton(
+              onPressed: () => _homeStore.changeSortType(),
+              icon: const Icon(Icons.sort_rounded))
+        ],
       ),
       body: ValueListenableBuilder<HomeState>(
           valueListenable: _homeStore,
