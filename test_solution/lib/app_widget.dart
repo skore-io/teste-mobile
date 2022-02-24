@@ -25,6 +25,7 @@ class AppWidget extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Solução - Teste Mobile',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark),
         home: const HomeScreen(),
       ),
