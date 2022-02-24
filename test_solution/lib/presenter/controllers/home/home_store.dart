@@ -27,9 +27,9 @@ class HomeStore extends ValueNotifier<HomeState> {
     });
   }
 
-  Future<void> deleteDiscipline(DisciplineModel classModel) async {
+  Future<void> deleteDiscipline(DisciplineModel disciplineModel) async {
     value = LoadingHomeState();
-    final result = await repository.deleteDiscipline(classModel);
+    final result = await repository.deleteDiscipline(disciplineModel);
     result.fold((e) {
       final message = e.toString();
       value = ErrorHomeState(message);

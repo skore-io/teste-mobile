@@ -5,12 +5,12 @@ import 'package:intl/intl.dart';
 
 class DisciplinesListItem extends StatelessWidget {
   final Function deleteMethod;
-  final DisciplineModel classModel;
-  const DisciplinesListItem(this.classModel, this.deleteMethod, {Key? key})
+  final DisciplineModel disciplineModel;
+  const DisciplinesListItem(this.disciplineModel, this.deleteMethod, {Key? key})
       : super(key: key);
 
   Widget checkStatus() {
-    final percentage = classModel.summary.percentage;
+    final percentage = disciplineModel.summary.percentage;
     if (percentage != null) {
       return PercentIndicator(percentage);
     } else {
@@ -44,16 +44,17 @@ class DisciplinesListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                classModel.name,
+                disciplineModel.name,
                 style: const TextStyle(fontSize: 14.0),
               ),
               Text(
                 DateFormat("dd/MM/yyyy").format(
-                    DateTime.fromMillisecondsSinceEpoch(classModel.createdAt)),
+                    DateTime.fromMillisecondsSinceEpoch(
+                        disciplineModel.createdAt)),
                 style: const TextStyle(fontSize: 12.0),
               ),
               Text(
-                classModel.id,
+                disciplineModel.id,
                 style: const TextStyle(fontSize: 10.0),
               )
             ],
@@ -64,7 +65,7 @@ class DisciplinesListItem extends StatelessWidget {
             children: [
               checkStatus(),
               IconButton(
-                onPressed: () => deleteMethod(classModel),
+                onPressed: () => deleteMethod(disciplineModel),
                 icon: Icon(
                   Icons.delete,
                   color: Colors.red.shade600,

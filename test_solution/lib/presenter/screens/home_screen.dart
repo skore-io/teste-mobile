@@ -64,9 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListView.builder(
                 itemCount: state.disciplinesList.length,
                 itemBuilder: (context, index) {
-                  var classItem = state.disciplinesList[index];
+                  var discipline = state.disciplinesList[index];
                   return DisciplinesListItem(
-                      classItem, _homeStore.deleteDiscipline);
+                      discipline, _homeStore.deleteDiscipline);
                 },
               );
             }

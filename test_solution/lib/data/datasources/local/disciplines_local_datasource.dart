@@ -28,7 +28,7 @@ class DisciplinesLocalDatasource {
     }
   }
 
-  Future<void> deleteDiscipline(DisciplineModel classModel) async {
-    mockDatabase.removeWhere((element) => element == classModel);
+  Future<void> deleteDiscipline(DisciplineModel disciplineModel) async {
+    mockDatabase.removeWhere((element) => element == disciplineModel);
   }
 }

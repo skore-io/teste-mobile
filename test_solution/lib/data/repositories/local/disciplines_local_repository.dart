@@ -18,9 +18,9 @@ class DisciplinesLocalRepository {
   }
 
   Future<Either<Failure, void>> deleteDiscipline(
-      DisciplineModel classModel) async {
+      DisciplineModel disciplineModel) async {
     try {
-      final result = await datasource.deleteDiscipline(classModel);
+      final result = await datasource.deleteDiscipline(disciplineModel);
       return Right(result);
     } catch (e) {
       return Left(InternalFailure(message: e.toString()));

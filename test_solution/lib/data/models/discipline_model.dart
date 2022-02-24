@@ -67,7 +67,7 @@ class DisciplineModel extends Equatable {
 
   @override
   String toString() {
-    return 'ClassModel(companyId: $companyId, createdAt: $createdAt, name: $name, id: $id, status: $status, summary: $summary)';
+    return 'DisciplineModel(companyId: $companyId, createdAt: $createdAt, name: $name, id: $id, status: $status, summary: $summary)';
   }
 
   @override
