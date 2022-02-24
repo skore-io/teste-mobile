@@ -11,7 +11,7 @@ class DisciplineModel extends Equatable {
   final String id;
   final String status;
   final SummaryModel summary;
-  DisciplineModel({
+  const DisciplineModel({
     required this.companyId,
     required this.createdAt,
     required this.name,
