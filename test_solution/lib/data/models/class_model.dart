@@ -2,14 +2,16 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+import 'package:test_solution/data/models/summary_model.dart';
+
 class ClassModel extends Equatable {
   final String companyId;
   final int createdAt;
   final String name;
   final String id;
   final String status;
-  final Map<String, int> summary;
-  const ClassModel({
+  final SummaryModel summary;
+  ClassModel({
     required this.companyId,
     required this.createdAt,
     required this.name,
@@ -24,7 +26,7 @@ class ClassModel extends Equatable {
     String? name,
     String? id,
     String? status,
-    Map<String, int>? summary,
+    SummaryModel? summary,
   }) {
     return ClassModel(
       companyId: companyId ?? this.companyId,
@@ -43,7 +45,7 @@ class ClassModel extends Equatable {
       'name': name,
       'id': id,
       'status': status,
-      'summary': summary,
+      'summary': summary.toMap(),
     };
   }
 
@@ -54,7 +56,7 @@ class ClassModel extends Equatable {
       name: map['name'] ?? '',
       id: map['id'] ?? '',
       status: map['status'] ?? '',
-      summary: Map<String, int>.from(map['summary']),
+      summary: SummaryModel.fromMap(map['summary']),
     );
   }
 

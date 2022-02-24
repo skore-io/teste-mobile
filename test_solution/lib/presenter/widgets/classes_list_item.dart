@@ -10,9 +10,9 @@ class ClassesListItem extends StatelessWidget {
       : super(key: key);
 
   Widget checkStatus(int index) {
-    if (index >= 0 && index <= 3) {
-      var percent = index % 2 == 0 ? 75 : 100;
-      return PercentIndicator(percent);
+    final percentage = classModel.summary.percentage;
+    if (percentage != null) {
+      return PercentIndicator(percentage);
     } else {
       return const SizedBox();
     }
