@@ -12,14 +12,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final HomeStore _homeStore;
+  late final HomeStore homeStore;
 
   @override
   void initState() {
     super.initState();
-    _homeStore = context.read<HomeStore>();
+    homeStore = context.read<HomeStore>();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      _homeStore.fetchDisciplines();
+      homeStore.fetchDisciplines();
     });
   }
 
@@ -30,48 +30,53 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Solução - Teste Mobile'),
         actions: [
           IconButton(
-              onPressed: () => _homeStore.changeSortType(),
-              icon: const Icon(Icons.sort_rounded))
+            onPressed: () => homeStore.changeSortType(),
+            icon: const Icon(Icons.sort_rounded),
+          )
         ],
       ),
       body: ValueListenableBuilder<HomeState>(
-          valueListenable: _homeStore,
-          builder: (context, state, child) {
-            if (state is LoadingHomeState) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+        valueListenable: homeStore,
+        builder: (_, state, __) {
+          if (state is LoadingHomeState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-            if (state is ErrorHomeState) {
-              return Center(
-                child: Text(
-                  state.message,
-                  style: const TextStyle(fontSize: 24.0),
-                ),
-              );
-            }
+          if (state is ErrorHomeState) {
+            return Center(
+              child: Text(
+                state.message,
+                style: const TextStyle(fontSize: 24.0),
+              ),
+            );
+          }
 
-            if (state is NoDataHomeState) {
-              return const Center(
-                  child: Text(
+          if (state is NoDataHomeState) {
+            return const Center(
+              child: Text(
                 'No Data Found',
                 style: TextStyle(fontSize: 24.0),
-              ));
-            }
+              ),
+            );
+          }
 
-            if (state is SuccessHomeState) {
-              return ListView.builder(
-                itemCount: state.disciplinesList.length,
-                itemBuilder: (context, index) {
-                  var discipline = state.disciplinesList[index];
-                  return DisciplinesListItem(
-                      discipline, _homeStore.deleteDiscipline);
-                },
-              );
-            }
-            return const SizedBox();
-          }),
+          if (state is SuccessHomeState) {
+            return ListView.builder(
+              itemCount: state.disciplinesList.length,
+              itemBuilder: (context, index) {
+                var discipline = state.disciplinesList[index];
+                return DisciplinesListItem(
+                  discipline,
+                  homeStore.deleteDiscipline,
+                );
+              },
+            );
+          }
+          return const SizedBox();
+        },
+      ),
     );
   }
 }
