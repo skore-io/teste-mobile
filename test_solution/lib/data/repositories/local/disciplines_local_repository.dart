@@ -4,13 +4,13 @@ import 'package:test_solution/data/datasources/local/disciplines_local_datasourc
 import 'package:test_solution/data/models/discipline_model.dart';
 
 class DisciplinesLocalRepository {
-  final DisciplinesLocalDatasource datasource;
+  final DisciplinesLocalDatasource _datasource;
 
-  DisciplinesLocalRepository(this.datasource);
+  DisciplinesLocalRepository(this._datasource);
 
   Future<Either<Failure, List<DisciplineModel>>> fetchDisciplines() async {
     try {
-      final result = await datasource.fetchDisciplines();
+      final result = await _datasource.fetchDisciplines();
       return Right(result);
     } catch (e) {
       return Left(InternalFailure(message: e.toString()));
@@ -20,7 +20,7 @@ class DisciplinesLocalRepository {
   Future<Either<Failure, void>> deleteDiscipline(
       DisciplineModel disciplineModel) async {
     try {
-      final result = await datasource.deleteDiscipline(disciplineModel);
+      final result = await _datasource.deleteDiscipline(disciplineModel);
       return Right(result);
     } catch (e) {
       return Left(InternalFailure(message: e.toString()));
