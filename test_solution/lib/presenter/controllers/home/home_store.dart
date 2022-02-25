@@ -4,15 +4,14 @@ import 'package:test_solution/data/repositories/local/disciplines_local_reposito
 import 'home_state.dart';
 
 class HomeStore extends ValueNotifier<HomeState> {
-  final DisciplinesLocalRepository repository;
-  HomeStore(this.repository) : super(InitialHomeState());
+  final DisciplinesLocalRepository _repository;
+  HomeStore(this._repository) : super(InitialHomeState());
 
-  var disciplinesList = <DisciplineModel>[];
-  var isAscendingSort = false;
+  var _isAscendingSort = false;
 
   Future<void> fetchDisciplines() async {
     value = LoadingHomeState();
-    final result = await repository.fetchDisciplines();
+    final result = await _repository.fetchDisciplines();
     result.fold((e) {
       final message = e.toString();
       value = ErrorHomeState(message);
@@ -20,16 +19,15 @@ class HomeStore extends ValueNotifier<HomeState> {
       if (success.isEmpty) {
         value = NoDataHomeState();
       } else {
-        disciplinesList = success;
-        sortList();
         value = SuccessHomeState(success);
+        _sortList();
       }
     });
   }
 
   Future<void> deleteDiscipline(DisciplineModel disciplineModel) async {
     value = LoadingHomeState();
-    final result = await repository.deleteDiscipline(disciplineModel);
+    final result = await _repository.deleteDiscipline(disciplineModel);
     result.fold((e) {
       final message = e.toString();
       value = ErrorHomeState(message);
@@ -39,17 +37,23 @@ class HomeStore extends ValueNotifier<HomeState> {
   }
 
   void changeSortType() {
-    value = LoadingHomeState();
-    isAscendingSort = !isAscendingSort;
-    sortList();
-    value = SuccessHomeState(disciplinesList);
+    _isAscendingSort = !_isAscendingSort;
+    _sortList();
   }
 
-  void sortList() {
-    if (isAscendingSort) {
+  void _sortList() {
+    final currentState = value;
+    if (currentState is! SuccessHomeState) {
+      return;
+    }
+
+    final disciplinesList = currentState.disciplinesList;
+
+    if (_isAscendingSort) {
       disciplinesList.sort((a, b) => a.createdAt.compareTo(b.createdAt));
     } else {
       disciplinesList.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     }
+    value = SuccessHomeState(disciplinesList);
   }
 }
