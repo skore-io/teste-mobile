@@ -9,11 +9,11 @@ class DisciplinesLocalDatasource {
   DisciplinesLocalDatasource(this.jsonDataAsset);
 
   var mockDatabase = <DisciplineModel>[];
-  var maxTurns = 0;
+  var maxTurns = true;
 
   Future<List<DisciplineModel>> fetchDisciplines() async {
     await Future.delayed(const Duration(seconds: 1));
-    if (mockDatabase.isEmpty && maxTurns == 0) {
+    if (mockDatabase.isEmpty && maxTurns) {
       final jsonData = await rootBundle.loadString(jsonDataAsset);
       Iterable data = json.decode(jsonData);
       mockDatabase = List<DisciplineModel>.from(
@@ -21,7 +21,7 @@ class DisciplinesLocalDatasource {
           (x) => DisciplineModel.fromMap(x),
         ),
       );
-      maxTurns = 1;
+      maxTurns = false;
       return mockDatabase;
     } else {
       return mockDatabase;
