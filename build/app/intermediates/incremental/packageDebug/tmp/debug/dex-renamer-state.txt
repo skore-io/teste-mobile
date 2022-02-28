@@ -1,0 +1,4 @@
+#Fri Feb 25 20:47:17 BRT 2022
+base.0=/Users/ayrtonporto/Documents/projetos.pessoal/teste-mobile/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

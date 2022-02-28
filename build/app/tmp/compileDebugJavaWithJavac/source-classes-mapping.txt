@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+br/com/porto/flutter_uol_skore_teste/MainActivity.java
+ br.com.porto.flutter_uol_skore_teste.MainActivity
+br/com/porto/flutter_uol_skore_teste/BuildConfig.java
+ br.com.porto.flutter_uol_skore_teste.BuildConfig
