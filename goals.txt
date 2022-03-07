@@ -1,0 +1,4 @@
+- construir service
+- criar modelo
+- contruir controller
+- criar listagem
