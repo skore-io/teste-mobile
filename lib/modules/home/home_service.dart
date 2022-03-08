@@ -40,7 +40,7 @@ class HomeService {
         "id": "114_5FK4ExJCz3vW4XmS0KVr_349798",
         "status": "NOT_STARTED",
         "summary": {"percentage": null}
-      }
+      },
     ];
   }
 }
