@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_mobile/model/class_model.dart';
 import 'package:teste_mobile/modules/home/home_controller.dart';
 import 'package:teste_mobile/modules/home/home_functions.dart';
+import 'package:teste_mobile/shared/class_item.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -34,6 +34,19 @@ class HomePageState extends State<HomePage> {
     });
   }
 
+  List<ClassItem> classesList(
+      List<Class> classes, bool deleting, Function deleteFunction) {
+    final List<ClassItem> items = [];
+    for (final i in classes) {
+      items.add(ClassItem(
+        item: i,
+        canDelete: deleting,
+        deleteFunction: deleteFunction,
+      ));
+    }
+    return items;
+  }
+
   @override
   void initState() {
     fetchData();
@@ -56,7 +69,7 @@ class HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              ...homeFunctions.classesList(classes, deleting, deleteItem),
+              ...classesList(classes, deleting, deleteItem),
             ],
           ),
         ),

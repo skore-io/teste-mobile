@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_mobile/model/class_model.dart';
 
@@ -68,7 +67,7 @@ class ClassItem extends StatelessWidget {
     /// Render delete button
     ///
     /// This will happen if delete mode is activated by [HomePage]
-    Widget? renderDeletButton() {
+    Widget renderDeletButton() {
       if (canDelete) {
         return IconButton(
           onPressed: () => deleteFunction.call(item),
@@ -78,6 +77,7 @@ class ClassItem extends StatelessWidget {
           ),
         );
       }
+      return SizedBox();
     }
 
     return Container(
