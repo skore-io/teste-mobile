@@ -14,6 +14,8 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
+  int carouselindex = 0;
+  final _controller = CarouselController();
   @override
   Widget build(BuildContext context) {
     final OnboardingController controller = Get.put(OnboardingController());
@@ -39,21 +41,26 @@ class _OnboardingViewState extends State<OnboardingView> {
                 CarouselSlider(
                   items: controller.carouselItems,
                   options: CarouselOptions(
-                    enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                    autoPlayCurve: Curves.decelerate,
-                    enableInfiniteScroll: true,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    autoPlayInterval: const Duration(seconds: 5),
-                    height: Get.height * 0.7 + 20,
-                    viewportFraction: 1,
-                  ),
+                      enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                      autoPlayCurve: Curves.decelerate,
+                      enableInfiniteScroll: true,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      autoPlayInterval: const Duration(seconds: 5),
+                      height: Get.height * 0.7 + 20,
+                      viewportFraction: 1,
+                      onPageChanged: (index, _) {
+                        setState(() {
+                          carouselindex = index;
+                        });
+                      }),
+                  carouselController: _controller,
                 ),
                 SimpleButton(
-                  title: 'Iniciar',
+                  title: carouselindex != 2 ? 'Próximo' : 'Iniciar',
                   color: AppColors.gray,
                   onPressed: () {
-                    controller.startButton();
+                    carouselindex != 2 ? _controller.nextPage() : controller.startButton();
                   },
                 )
               ],
