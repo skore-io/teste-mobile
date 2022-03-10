@@ -1,0 +1,33 @@
+name: testemobile
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  get: ^4.6.1
+  get_storage: ^2.0.3
+  rive: ^0.8.1
+  carousel_slider: ^4.0.0
+  flutter_svg: ^0.22.0
+  equatable: ^2.0.3
+  intl: ^0.17.0
+  shimmer: ^2.0.0
+  url_launcher: ^6.0.20
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/assets/
+    - lib/data/repositories/
+
