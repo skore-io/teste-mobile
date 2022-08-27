@@ -23,6 +23,10 @@ Widget returnIconOrPercentage(String status, double perc) {
   if (status == 'IN_PROGRESS') {
     return Row(
       children: [
+        Text('${perc.round()}%'),
+        const SizedBox(
+          width: 10,
+        ),
         Container(
           margin: const EdgeInsets.only(right: 5),
           width: 20,
