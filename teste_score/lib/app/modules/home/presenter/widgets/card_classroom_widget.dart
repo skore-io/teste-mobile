@@ -56,34 +56,40 @@ Widget returnIconOrPercentage(String status, double perc) {
 class _CardClassRoomWidgetState extends State<CardClassRoomWidget> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      minLeadingWidth: 0,
-      title: Row(
-        children: [
-          widget.classRoom.status != 'NOT_STARTED'
-              ? returnIconOrPercentage(
-                  widget.classRoom.status,
-                  widget.classRoom.percentage,
-                )
-              : const SizedBox(),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(widget.classRoom.name),
-                Text(widget.classRoom.id),
-              ],
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        title: Row(
+          children: [
+            widget.classRoom.status != 'NOT_STARTED'
+                ? returnIconOrPercentage(
+                    widget.classRoom.status,
+                    widget.classRoom.percentage,
+                  )
+                : const SizedBox(),
+            Expanded(
+              child: Text(widget.classRoom.name),
             ),
+          ],
+        ),
+        subtitle: Text(
+          widget.classRoom.createdAt.DiaMesAnoDB(),
+        ),
+        trailing: TextButton(
+          onPressed: widget.removeClassRoom,
+          child: const Text('Excluir'),
+        ),
+        tilePadding: EdgeInsets.zero,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                'ID: ${widget.classRoom.id}',
+              ),
+            ],
           ),
         ],
-      ),
-      subtitle: Text(
-        widget.classRoom.createdAt.DiaMesAnoDB(),
-      ),
-      trailing: TextButton(
-        onPressed: widget.removeClassRoom,
-        child: const Text('Excluir'),
       ),
     );
   }
