@@ -2,8 +2,6 @@ import 'package:teste_score/app/modules/home/domain/entities/classroom.dart';
 
 abstract class ClassRoomEvents {}
 
-class InitialEvent extends ClassRoomEvents {}
-
 class LoadingEvent extends ClassRoomEvents {}
 
 class SuccessGetListEvent extends ClassRoomEvents {
@@ -13,8 +11,6 @@ class SuccessGetListEvent extends ClassRoomEvents {
     required this.classRoom,
   });
 }
-
-class SuccessDeleteItemListEvent extends ClassRoomEvents {}
 
 class ErrorEvent extends ClassRoomEvents {
   final String message;
