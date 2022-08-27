@@ -48,7 +48,9 @@ class _HomePageState extends State<HomePage> {
               final event = snapshot.data;
 
               if (event is ErrorEvent) {
-                return Text(event.message);
+                return Center(
+                  child: Text(event.message),
+                );
               }
 
               if (event is! SuccessGetListEvent) {
