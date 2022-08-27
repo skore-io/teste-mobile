@@ -48,8 +48,26 @@ class _HomePageState extends State<HomePage> {
               final event = snapshot.data;
 
               if (event is ErrorEvent) {
-                return Center(
-                  child: Text(event.message),
+                return SizedBox(
+                  height: context.screenHeight,
+                  width: context.screenWidth,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        event.message,
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          stream = widget.controller.getClassRoom();
+                          setState(() {});
+                        },
+                        child: const Text('Buscar novamente'),
+                      )
+                    ],
+                  ),
                 );
               }
 
