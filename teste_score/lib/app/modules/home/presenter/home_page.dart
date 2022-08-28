@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          stream = widget.controller.getClassRoom();
+                          init();
                           setState(() {});
                         },
                         child: const Text('Buscar novamente'),
