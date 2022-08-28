@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late Stream<ClassRoomEvents> stream;
 
-  Future<void> init() async {
+  void init() {
     stream = widget.controller.getClassRoom();
   }
 
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          stream = widget.controller.getClassRoom();
+                          init();
                           setState(() {});
                         },
                         child: const Text('Buscar novamente'),
