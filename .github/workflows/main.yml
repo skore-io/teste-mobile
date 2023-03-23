@@ -1,0 +1,20 @@
+name: MY_TEST
+
+on:
+  issue_comment:
+    types: [created, edited, deleted]
+
+jobs:
+  display:
+    runs-on: ubuntu-latest
+    env:
+      platform: Azure
+      region: central
+      profile_path: profile/
+    
+    steps:
+      - name: Display custom variables
+        if: ${{ env.platform == 'Azure' }}
+        run: |
+          echo "The platform is ${{ env.platform }}"
+          echo "The region is ${{ env.region }}"
