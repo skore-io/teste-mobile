@@ -93,7 +93,7 @@ Crie uma aplicação que contenha uma lista com os itens declarados acima, essa 
 - Faça o teste com calma e respeite os requisitos solicitados.
 - Caso tenha alguma dúvida, nos procure ou informe no PR.
 - Fique à vontade para fazer melhorias em sua lista.
-- Para construir a aplicação, preferencialmente utilizar alguma das seguintes linguagens: Dart/Flutter, Kotlin ou Swift.
+- Para construir a aplicação, preferencialmente utilizar alguma das seguintes linguagens: Dart/Flutter (com null safety), Kotlin ou Swift.
 
 
 
