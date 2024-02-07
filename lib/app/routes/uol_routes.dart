@@ -1,8 +1,10 @@
 
+import 'package:teste_mobile/presenter/splash_screen/ui/splash_screen.dart';
+
 import 'routes.dart';
 
 Widget initialPage(RouteSettings routeSettings, Controller controller) {
-  Widget initialPage = const DashboardView();
+  Widget initialPage = const SplashScreen();
 
   return initialPage;
 }
@@ -23,6 +25,8 @@ Widget getPage(RouteSettings routeSettings, Controller controller) {
   switch (routeSettings.name) {
     case '/':
       return initialPage(routeSettings, controller);
+      case SplashScreen.routeName:
+      return const SplashScreen();
     case DashboardView.routeName:
       return const DashboardView();
       
